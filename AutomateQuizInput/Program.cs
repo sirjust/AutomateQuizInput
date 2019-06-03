@@ -13,10 +13,8 @@ namespace AutomateQuizInput
             // the text document needs to be in the Docs folder and in the right format
             string path = @"../../Docs/Quizzes.txt";
             var allLines = Helper.ReadDocument(path);
-            foreach (string line in allLines)
-            {
-                Console.WriteLine(line);
-            }
+            var separatedQuizzes = Helper.SeparateQuizzes(allLines);
+            Console.WriteLine(separatedQuizzes);
             Console.ReadLine();
         }
     }
