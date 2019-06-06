@@ -38,6 +38,7 @@ namespace AutomateQuizInput
             }
             return initialSeparatedList;
         }
+
         public static List<Quiz> GetQuizzes()
         {
             return new List<Quiz>();
