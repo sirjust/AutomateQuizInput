@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +12,7 @@ namespace AutomateQuizInput
 {
     public class Quiz
     {
+
         public string CourseId;
         public int QuizId;
         public string Status;
@@ -84,21 +88,36 @@ namespace AutomateQuizInput
                 }
 
                 // Check if there is a number and a close parentheses
-                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1,2}\)+)"))
+                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1}\)+)"))
                 {
+                    // check if there is one number at the start
                     questionId = Convert.ToInt32(char.GetNumericValue(quizDataList[i].First()));
                     // If so, that line is the question line
                     questionText = quizDataList[i];
                     Console.WriteLine($"Question {questionId}: {questionText}");
                 }
 
+                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{2}\)+)"))
+                {
+                    // check if there are two numbers at the start
+                    questionId = Convert.ToInt32(quizDataList[i].Substring(0, 2));
+                    // If so, that line is the question line
+                    questionText = quizDataList[i];
+                    Console.WriteLine($"Question {questionId}: {questionText}");
+                }
+
                 // The next lines until the blank line are the potential answers
-                else
+                        else
                 {
                     answers.Add(quizDataList[i]);
                 }
             }
             return questions;
+        }
+
+        public void InputQuizTask(Quiz quiz)
+        {
+            Console.WriteLine($"Working on quiz {quiz.QuizId}");
         }
     }
 }

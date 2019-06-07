@@ -386,7 +386,7 @@ Never
 Always
 On Class 2 arterial roads
 
-Quiz  6
+Quiz 6
 1) Section 508.18-24. Venting of Gases, Pipe Capacity, Pressures Regulators:  has been adopted for the 2006 UPC code cycle.
 True
 False*

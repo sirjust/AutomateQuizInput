@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,9 +42,18 @@ namespace AutomateQuizInput
             return initialSeparatedList;
         }
 
-        public static List<Quiz> GetQuizzes()
+        public static IWebDriver OpenWebpage()
         {
-            return new List<Quiz>();
+            IWebDriver driver;
+
+            driver = new FirefoxDriver(@"../../../packages/Selenium.Firefox.WebDriver.0.24.0/driver/")
+            {
+                Url = $"https://{LoginInfo.username}:{LoginInfo.password}@www.anytimece.com/cgi-bin/admin/course_pick_form"
+            };
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            driver.Manage().Window.Maximize();
+            return driver;
         }
     }
 }

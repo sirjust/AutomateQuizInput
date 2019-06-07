@@ -22,8 +22,14 @@ namespace AutomateQuizInput
             {
                 // instantiate a quiz using the data in the list
                 Quiz quiz = new Quiz(quizData, courseId);
-                // input quiz data into the admin using the UI
                 completeQuizzes.Add(quiz);
+            }
+            // input data from the quizzes into the admin portal using the ui
+            Helper.OpenWebpage();
+
+            foreach(Quiz quiz in completeQuizzes)
+            {
+                quiz.InputQuizTask(quiz);
             }
             Console.ReadLine();
         }
