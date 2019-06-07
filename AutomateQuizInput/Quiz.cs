@@ -11,7 +11,7 @@ namespace AutomateQuizInput
     {
         public string CourseId;
         public int QuizId;
-        public string status;
+        public string Status;
         public int CoursePage;
         public int PassPage;
         public int FailPage;
@@ -27,7 +27,7 @@ namespace AutomateQuizInput
             // this will need to be validated
             var firstLine = quizDataList[0];
             QuizId = Convert.ToInt32(Char.GetNumericValue(firstLine[5]));
-            status = "Good";
+            Status = "Good";
             CoursePage = default;
             PassPage = default;
             FailPage = default;
@@ -72,7 +72,6 @@ namespace AutomateQuizInput
                     questions.Add(question);
                     // remove values from the variable
                     question = new Question();
-                    answers = new List<string>();
                     continue;
                 }
 
@@ -85,7 +84,7 @@ namespace AutomateQuizInput
                 }
 
                 // Check if there is a number and a close parentheses
-                else if (Regex.IsMatch(quizDataList[i], @"([^0-9{1}\)+])"))
+                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1,2}\)+)"))
                 {
                     questionId = Convert.ToInt32(char.GetNumericValue(quizDataList[i].First()));
                     // If so, that line is the question line
@@ -98,10 +97,8 @@ namespace AutomateQuizInput
                 {
                     answers.Add(quizDataList[i]);
                 }
-
             }
-
-            return null;
+            return questions;
         }
     }
 }

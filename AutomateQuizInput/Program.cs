@@ -25,7 +25,6 @@ namespace AutomateQuizInput
                 // input quiz data into the admin using the UI
                 completeQuizzes.Add(quiz);
             }
-
             Console.ReadLine();
         }
     }
