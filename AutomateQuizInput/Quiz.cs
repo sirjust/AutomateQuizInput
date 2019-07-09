@@ -23,7 +23,10 @@ namespace AutomateQuizInput
         public string ImagePath;
         public string Comment;
         List<Question> questions;
+        public Quiz()
+        {
 
+        }
         public Quiz(IEnumerable<string> quizData, string courseId)
         {
             List<string> quizDataList = quizData.ToList(); 
@@ -115,9 +118,10 @@ namespace AutomateQuizInput
             return questions;
         }
 
-        public void InputQuizTask(Quiz quiz)
+        public string InputQuizTask(Quiz quiz)
         {
-            Console.WriteLine($"Working on quiz {quiz.QuizId}");
+            //Console.WriteLine($"Working on quiz {quiz.QuizId}");
+            return $"working on quize {quiz.QuizId}";
         }
     }
 }
