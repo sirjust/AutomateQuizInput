@@ -1,6 +1,8 @@
 /packages
 Debug/
 Logs/
+bin/*
 
 LoginInfo.cs
-
+*.suo
+.vs/
