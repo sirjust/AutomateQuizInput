@@ -13,16 +13,16 @@ namespace AutomateQuizInput
     public class Quiz
     {
 
-        public string CourseId;
-        public int QuizId;
-        public string Status;
-        public int CoursePage;
-        public int PassPage;
-        public int FailPage;
-        public decimal PassFailPercent;
-        public string ImagePath;
-        public string Comment;
-        List<Question> questions;
+        public string CourseId { get; set; }
+        public int QuizId { get; set; }
+        public string Status { get; set; }
+        public int CoursePage { get; set; }
+        public int PassPage { get; set; }
+        public int FailPage { get; set; }
+        public decimal PassFailPercent { get; set; }
+        public string ImagePath { get; set; }
+        public string Comment { get; set; }
+        List<Question> questions { get; set; }
 
         public Quiz(IEnumerable<string> quizData, string courseId)
         {
@@ -43,10 +43,12 @@ namespace AutomateQuizInput
 
         private class Question
         {
-            public int QuestionId;
-            public string QuestionText;
-            public List<string> Answers;
-            public int CorrectAnswerIndex;
+            public int QuestionId { get; set; }
+            public string QuestionText { get; set; }
+            public List<string> Answers { get; set; }
+            public int CorrectAnswerIndex { get; set; }
+            public string QuestionStatus { get; set; }
+            public string QuestionType { get; set; }
 
             public Question(int id = default, string questionText = default, List<string> answers = default, int correctAnswerIndex = default)
             {
