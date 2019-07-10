@@ -34,6 +34,10 @@ namespace AutomateQuizInput
             // this will need to be validated
             var firstLine = quizDataList[0];
             QuizId = Convert.ToInt32(Char.GetNumericValue(firstLine[5]));
+            foreach (var quizid in firstLine)
+            {
+                Console.WriteLine(quizid);
+            }
             Status = "Good";
             CoursePage = default;
             PassPage = default;
