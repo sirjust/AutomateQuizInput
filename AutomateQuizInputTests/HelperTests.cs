@@ -27,8 +27,7 @@ namespace AutomateQuizInputTests
         public void SeparateQuizzes_ShouldReturnTwoSeparateQuizzes_WhenQuizInTextTwice()
         {
             // arrange
-            IEnumerable<string> testObject = new List<string> {
-        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
+            IEnumerable<string> testObject = GetMockQuizInputData();
 
             // act
             List<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject).ToList();
@@ -41,23 +40,28 @@ namespace AutomateQuizInputTests
             //arrange
             string expected = "World!";
             //Act
-            var result = Helper.ReadDocument(@"C:\AutomateQuizInput\AutomateQuizInput\Docs\TextFile.txt").ToList();
+            var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\TextFile.txt").ToList();
             //assert
             Assert.AreEqual(expected, result[1]);
         }
+
         [TestMethod]
-        public void InputQuizTask_ShouldRetrunQuizzes()
+        public void InputQuizTask_ShouldReturnQuizzes()
         {
             //arrange
-            Quiz quiz = new Quiz();
-            quiz.QuizId = 4545;
+            Quiz quiz = new Quiz(GetMockQuizInputData(), "4545");
             //this is new note for tets
-            string str = $"working on quize {quiz.QuizId}";
+            string str = $"Working on quiz {quiz.QuizId}";
 
             //act
             var x = quiz.InputQuizTask(quiz);
-            //Assert.AreSame();
             Assert.AreEqual(str, x);
+        }
+
+        public List<string> GetMockQuizInputData()
+        {
+            return new List<string> {
+        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
         }
     }
 }

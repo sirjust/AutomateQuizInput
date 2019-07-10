@@ -24,7 +24,6 @@ namespace AutomateQuizInput
         public string Comment { get; set; }
         List<Question> questions { get; set; }
 
-        }
         public Quiz(IEnumerable<string> quizData, string courseId)
         {
             List<string> quizDataList = quizData.ToList(); 
@@ -40,24 +39,6 @@ namespace AutomateQuizInput
             ImagePath = default;
             Comment = default;
             questions = GenerateQuestions(quizDataList);
-        }
-
-        private class Question
-        {
-            public int QuestionId { get; set; }
-            public string QuestionText { get; set; }
-            public List<string> Answers { get; set; }
-            public int CorrectAnswerIndex { get; set; }
-            public string QuestionStatus { get; set; }
-            public string QuestionType { get; set; }
-
-            public Question(int id = default, string questionText = default, List<string> answers = default, int correctAnswerIndex = default)
-            {
-                QuestionId = id;
-                QuestionText = questionText;
-                Answers = answers;
-                CorrectAnswerIndex = correctAnswerIndex;
-            }
         }
 
         private List<Question> GenerateQuestions(List<string> quizDataList)
@@ -120,8 +101,7 @@ namespace AutomateQuizInput
 
         public string InputQuizTask(Quiz quiz)
         {
-            //Console.WriteLine($"Working on quiz {quiz.QuizId}");
-            return $"working on quize {quiz.QuizId}";
+            return $"Working on quiz {quiz.QuizId}";
         }
     }
 }
