@@ -37,31 +37,52 @@ namespace AutomateQuizInputTests
         [TestMethod]
         public void ReadDocument_Shouldreturn_TwolinewheninputisTwo()
         {
-            //arrange
+            // arrange
             string expected = "World!";
-            //Act
+            // act
             var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\TextFile.txt").ToList();
-            //assert
+            // assert
             Assert.AreEqual(expected, result[1]);
         }
 
         [TestMethod]
         public void InputQuizTask_ShouldReturnQuizzes()
         {
-            //arrange
+            // arrange
             Quiz quiz = new Quiz(GetMockQuizInputData(), "4545");
             //this is new note for tets
             string str = $"Working on quiz {quiz.QuizId}";
 
-            //act
+            // act
             var x = quiz.InputQuizTask(quiz);
+
+            // assert
             Assert.AreEqual(str, x);
+        }
+
+        [TestMethod]
+        public void GenerateQuestions_ShouldReturnAnswersForEachQuestion()
+        {
+            // arrange
+            var mockQuiz = GetMockQuiz();
+            var expected = 2;
+
+            // act
+            var answers = mockQuiz.Questions[0].Answers;
+
+            // assert
+            Assert.AreEqual(expected, answers.Count);
         }
 
         public List<string> GetMockQuizInputData()
         {
             return new List<string> {
         "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
+        }
+
+        public Quiz GetMockQuiz()
+        {
+            return new Quiz(new List<string> { "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "2) Question 2", "1", "2*", "" }, "1");
         }
     }
 }
