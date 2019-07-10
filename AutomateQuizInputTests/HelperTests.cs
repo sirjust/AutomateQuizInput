@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutomateQuizInput;
+using System;
+
 
 namespace AutomateQuizInputTests
 {
@@ -32,6 +34,30 @@ namespace AutomateQuizInputTests
             List<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject).ToList();
             // assert
             Assert.AreEqual(result.Count, 2);
+        }
+        [TestMethod]
+        public void ReadDocument_Shouldreturn_TwolinewheninputisTwo()
+        {
+            //arrange
+            string expected = "World!";
+            //Act
+            var result = Helper.ReadDocument(@"C:\AutomateQuizInput\AutomateQuizInput\Docs\TextFile.txt").ToList();
+            //assert
+            Assert.AreEqual(expected, result[1]);
+        }
+        [TestMethod]
+        public void InputQuizTask_ShouldRetrunQuizzes()
+        {
+            //arrange
+            Quiz quiz = new Quiz();
+            quiz.QuizId = 4545;
+            //this is new note for tets
+            string str = $"working on quize {quiz.QuizId}";
+
+            //act
+            var x = quiz.InputQuizTask(quiz);
+            //Assert.AreSame();
+            Assert.AreEqual(str, x);
         }
     }
 }
