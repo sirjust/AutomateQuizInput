@@ -71,11 +71,12 @@ namespace AutomateQuizInput
 
                 if (quizDataList[i] == "")
                 {
-                    Question question = new Question(questionId, questionText, answers, CorrectAnswerIndex);
+                    Question question = new Question(questionId, questionText, answers.ToList(), CorrectAnswerIndex);
                     // add a copy of the question to the quiz
                     questions.Add(question);
                     // remove values from the variable
                     question = new Question();
+                    answers.Clear();
                     continue;
                 }
 
