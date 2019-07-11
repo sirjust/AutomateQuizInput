@@ -52,7 +52,22 @@ namespace AutomateQuizInput
                 Url = $"https://{LoginInfo.username}:{LoginInfo.password}@www.anytimece.com/cgi-bin/admin/course_pick_form"
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
+            driver.FindElement(By.Name("course_id")).Click();
+            new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
+            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
+            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+            //driver.FindElement(By.XPath("//input[@value='Add Quiz']")).Click();
+            driver.FindElement(By.Name("course_id")).Click();
+            driver.FindElement(By.Name("quiz_id")).Click();
+            driver.FindElement(By.Name("quiz_status")).Click();
+            driver.FindElement(By.Name("course_page")).Click();
+            driver.FindElement(By.Name("course_pass_page")).Click();
+            driver.FindElement(By.XPath("//td/table[2]")).Click();
+            driver.FindElement(By.Name("course_fail_page")).Click();
+            driver.FindElement(By.Name("quiz_image_path")).Click();
+            driver.FindElement(By.Name("quiz_image_path")).Click();
+            driver.FindElement(By.Name("quiz_comment")).Click();
+            driver.FindElement(By.Name("button_action")).Click();
             driver.Manage().Window.Maximize();
             return driver;
         }
