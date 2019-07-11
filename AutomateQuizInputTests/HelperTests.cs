@@ -27,13 +27,15 @@ namespace AutomateQuizInputTests
         public void SeparateQuizzes_ShouldReturnTwoSeparateQuizzes_WhenQuizInTextTwice()
         {
             // arrange
-            IEnumerable<string> testObject = GetMockQuizInputData();
+            IEnumerable<string> testObject = TestAuxiliaryMethods.GetMockQuizInputData();
+            int expected = 2;
 
             // act
             List<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject).ToList();
             // assert
-            Assert.AreEqual(result.Count, 2);
+            Assert.AreEqual(expected, result.Count);
         }
+
         [TestMethod]
         public void ReadDocument_Shouldreturn_TwolinewheninputisTwo()
         {
@@ -49,7 +51,7 @@ namespace AutomateQuizInputTests
         public void InputQuizTask_ShouldReturnQuizzes()
         {
             // arrange
-            Quiz quiz = new Quiz(GetMockQuizInputData(), "4545");
+            Quiz quiz = new Quiz(TestAuxiliaryMethods.GetMockQuizInputData(), "4545");
             //this is new note for tets
             string str = $"Working on quiz {quiz.QuizId}";
 
@@ -64,7 +66,7 @@ namespace AutomateQuizInputTests
         public void GenerateQuestions_ShouldReturnAnswersForEachQuestion()
         {
             // arrange
-            var mockQuiz = GetMockQuiz();
+            var mockQuiz = TestAuxiliaryMethods.GetMockQuiz();
             var expected = 2;
 
             // act
@@ -72,17 +74,6 @@ namespace AutomateQuizInputTests
 
             // assert
             Assert.AreEqual(expected, answers.Count);
-        }
-
-        public List<string> GetMockQuizInputData()
-        {
-            return new List<string> {
-        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
-        }
-
-        public Quiz GetMockQuiz()
-        {
-            return new Quiz(new List<string> { "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "2) Question 2", "1", "2*", "" }, "1");
         }
     }
 }
