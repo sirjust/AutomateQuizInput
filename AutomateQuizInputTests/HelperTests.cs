@@ -27,37 +27,53 @@ namespace AutomateQuizInputTests
         public void SeparateQuizzes_ShouldReturnTwoSeparateQuizzes_WhenQuizInTextTwice()
         {
             // arrange
-            IEnumerable<string> testObject = new List<string> {
-        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
+            IEnumerable<string> testObject = TestAuxiliaryMethods.GetMockQuizInputData();
+            int expected = 2;
 
             // act
             List<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject).ToList();
             // assert
-            Assert.AreEqual(result.Count, 2);
+            Assert.AreEqual(expected, result.Count);
         }
+
         [TestMethod]
         public void ReadDocument_Shouldreturn_TwolinewheninputisTwo()
         {
-            //arrange
+            // arrange
             string expected = "World!";
-            //Act
-            var result = Helper.ReadDocument(@"C:\AutomateQuizInput\AutomateQuizInput\Docs\TextFile.txt").ToList();
-            //assert
+            // act
+            var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\TextFile.txt").ToList();
+            // assert
             Assert.AreEqual(expected, result[1]);
         }
-        [TestMethod]
-        public void InputQuizTask_ShouldRetrunQuizzes()
-        {
-            //arrange
-            Quiz quiz = new Quiz();
-            quiz.QuizId = 4545;
-            //this is new note for tets
-            string str = $"working on quize {quiz.QuizId}";
 
-            //act
+        [TestMethod]
+        public void InputQuizTask_ShouldReturnQuizzes()
+        {
+            // arrange
+            Quiz quiz = new Quiz(TestAuxiliaryMethods.GetMockQuizInputData(), "4545");
+            //this is new note for tets
+            string str = $"Working on quiz {quiz.QuizId}";
+
+            // act
             var x = quiz.InputQuizTask(quiz);
-            //Assert.AreSame();
+
+            // assert
             Assert.AreEqual(str, x);
+        }
+
+        [TestMethod]
+        public void GenerateQuestions_ShouldReturnAnswersForEachQuestion()
+        {
+            // arrange
+            var mockQuiz = TestAuxiliaryMethods.GetMockQuiz();
+            var expected = 2;
+
+            // act
+            var answers = mockQuiz.Questions[0].Answers;
+
+            // assert
+            Assert.AreEqual(expected, answers.Count);
         }
     }
 }

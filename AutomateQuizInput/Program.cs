@@ -29,7 +29,8 @@ namespace AutomateQuizInput
 
             foreach(Quiz quiz in completeQuizzes)
             {
-                quiz.InputQuizTask(quiz);
+                var text = quiz.InputQuizTask(quiz);
+                Console.WriteLine(text);
             }
             Console.ReadLine();
         }
