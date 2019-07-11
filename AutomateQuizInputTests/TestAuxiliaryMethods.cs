@@ -12,7 +12,7 @@ namespace AutomateQuizInputTests
         public static List<string> GetMockQuizInputData()
         {
             return new List<string> {
-        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *"};
+        "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "Quiz 2","1)  A chimney can have more than one(1) passageway.", "True", "False *", ""};
         }
 
         public static Quiz GetMockQuiz()
