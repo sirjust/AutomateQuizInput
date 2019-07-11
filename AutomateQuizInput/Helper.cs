@@ -52,6 +52,7 @@ namespace AutomateQuizInput
                 Url = $"https://{LoginInfo.username}:{LoginInfo.password}@www.anytimece.com/cgi-bin/admin/course_pick_form"
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("course_id")).Click();
             new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
@@ -68,7 +69,7 @@ namespace AutomateQuizInput
             driver.FindElement(By.Name("quiz_image_path")).Click();
             driver.FindElement(By.Name("quiz_comment")).Click();
             driver.FindElement(By.Name("button_action")).Click();
-            driver.Manage().Window.Maximize();
+            
             return driver;
         }
 
