@@ -28,7 +28,7 @@ namespace AutomateQuizInputTests
         public void QuizConstructor_ShouldProduceCorrectQuestionIds()
         {
             // arrange
-            string expected = "10";
+            int expected = 10;
             var mockData = TestAuxiliaryMethods.GetMockQuizInputData();
             mockData.Add("10) A direct vent water heater is constructed and installed so that all air for combustion is derived directly from the outside atmosphere and all flue gases are discharged directly to the outside atmosphere.");
             mockData.Add("True*");
