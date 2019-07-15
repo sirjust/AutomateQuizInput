@@ -48,7 +48,6 @@ namespace AutomateQuizInput
                 }
             }
 
-
             Status = "Good";
             CoursePage = default;
             PassPage = default;

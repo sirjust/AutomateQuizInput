@@ -100,7 +100,6 @@ namespace AutomateQuizInput
                 element8.Click();
                 driver.FindElement(By.Name("button_action")).Click();
                 //driver.FindElement(By.XPath("//input[@value='Add questions to this Quiz']")).Click();
-            
             return driver;
         }
 
