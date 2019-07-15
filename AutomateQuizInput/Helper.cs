@@ -70,16 +70,6 @@ namespace AutomateQuizInput
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
                 //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
                 //addbtn.Click();
-                IWebElement courseId = wait.Until(d => d.FindElement(By.Name("course_id")));
-                courseId.Click();
-                courseId.Clear();
-                courseId.SendKeys("do");
-                IWebElement element1 = wait.Until(d => d.FindElement(By.Name("quiz_id")));
-                element1.Click();
-                element1.SendKeys(quizid.ToString());
-                IWebElement element6 = wait.Until(d => d.FindElement(By.Name("quiz_status")));
-                element6.Click();
-                element6.SendKeys("A");
                 IWebElement element = wait.Until(d => d.FindElement(By.Name("course_page")));
                 element.Click();
                 element.SendKeys("30");
