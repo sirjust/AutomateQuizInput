@@ -43,22 +43,73 @@ namespace AutomateQuizInput
             return initialSeparatedList;
         }
 
+     
         public static IWebDriver OpenWebpage()
         {
             IWebDriver driver;
-
+            List<Quiz> quiz = new List<Quiz>();
+            Quiz quizzes = new Quiz();
+            string courseid = quizzes.CourseId;
+            int quizid = quizzes.QuizId;
+            string status = quizzes.Status;
+            int coursepage = quizzes.CoursePage;
+            int coursepasspage = quizzes.PassPage;
+            int coursefailpag = quizzes.FailPage;
+            decimal passfailpercant = quizzes.PassFailPercent;
+            string imagepath = quizzes.ImagePath;
+            string comment = quizzes.Comment;
             driver = new FirefoxDriver(@"../../../packages/Selenium.Firefox.WebDriver.0.24.0/driver/")
             {
                 Url = $"https://{LoginInfo.username}:{LoginInfo.password}@www.anytimece.com/cgi-bin/admin/course_pick_form"
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            driver.Manage().Window.Maximize();
+                driver.FindElement(By.Name("course_id")).Click();
+                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+                //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
+                //addbtn.Click();
+                IWebElement courseId = wait.Until(d => d.FindElement(By.Name("course_id")));
+                courseId.Click();
+                courseId.Clear();
+                courseId.SendKeys("do");
+                IWebElement element1 = wait.Until(d => d.FindElement(By.Name("quiz_id")));
+                element1.Click();
+                element1.SendKeys(quizid.ToString());
+                IWebElement element6 = wait.Until(d => d.FindElement(By.Name("quiz_status")));
+                element6.Click();
+                element6.SendKeys("A");
+                IWebElement element = wait.Until(d => d.FindElement(By.Name("course_page")));
+                element.Click();
+                element.SendKeys("30");
+                IWebElement element2 = wait.Until(d => d.FindElement(By.Name("course_pass_page")));
+                element2.Click();
+                element2.SendKeys("34");
+                driver.FindElement(By.XPath("//td/table[2]")).Click();
+                IWebElement element3 = wait.Until(d => d.FindElement(By.Name("course_fail_page")));
+                element3.Click();
+                element3.SendKeys("5");
+                IWebElement element4 = wait.Until(d => d.FindElement(By.Name("pass_fail_percent")));
+                element4.Click();
+                element4.SendKeys("60");
+                driver.FindElement(By.Name("quiz_image_path")).Click();
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Quiz Image Path'])[1]/following::option[1]")).Click();
+                driver.FindElement(By.Name("quiz_image_path")).Click();
+                IWebElement element5 = wait.Until(d => d.FindElement(By.Name("quiz_comment")));
+                element5.Click();
+                element5.SendKeys("checking wait method");
+                driver.FindElement(By.Name("button_action")).Click();
 
-            
-            
-            driver.FindElement(By.Name("course_id")).Click();
-            new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
+                IWebElement element9 = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add another Quiz']")));
+                element9.Click();
+                IWebElement element7 = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add questions to this Quiz']")));
+                element7.Click();
+                IWebElement element8 = wait.Until(d => d.FindElement(By.XPath("//input[@value='Go Back to Admin Console']")));
+                element8.Click();
+                driver.FindElement(By.Name("button_action")).Click();
+                //driver.FindElement(By.XPath("//input[@value='Add questions to this Quiz']")).Click();
             return driver;
         }
 
