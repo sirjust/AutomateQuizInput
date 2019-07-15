@@ -17,7 +17,7 @@ namespace AutomateQuizInputTests
 
         public static Quiz GetMockQuiz()
         {
-            return new Quiz(new List<string> { "Quiz 1", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "2) Question 2", "1", "2*", "" }, "1");
+            return new Quiz(new List<string> { "Quiz 10", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "2) Question 2", "1", "2*", "" }, "1");
         }
     }
 }

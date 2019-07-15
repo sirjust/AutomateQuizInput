@@ -15,10 +15,10 @@ namespace AutomateQuizInputTests
         public void QuizConstructor_ShouldProduceCorrectQuizId()
         {
             // arrange
-            string expected = "10";
+            int expected = 10;
 
             // act
-            Quiz mockQuiz = new Quiz(TestAuxiliaryMethods.GetMockQuizInputData(), "10");
+            Quiz mockQuiz = TestAuxiliaryMethods.GetMockQuiz();
 
             // asssert
             Assert.AreEqual(expected, mockQuiz.QuizId);
