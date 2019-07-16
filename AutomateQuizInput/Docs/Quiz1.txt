@@ -10,6 +10,7 @@ Quiz 1
 54*
 67
 80
+
 Quiz 2
 1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.
 42
@@ -22,3 +23,4 @@ Quiz 2
 54*
 67
 80
+
