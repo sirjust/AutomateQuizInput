@@ -65,13 +65,13 @@ namespace AutomateQuizInput
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Window.Maximize();
-                driver.FindElement(By.Name("course_id")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.FindElement(By.Name("course_id")).Click();
                 new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
             //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
             //addbtn.Click();
-            Thread.Sleep(2000);
                 IWebElement element6 = wait.Until(d => d.FindElement(By.Name("quiz_status")));
                 element6.Click();
                 element6.SendKeys("A");
