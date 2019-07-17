@@ -19,5 +19,21 @@ namespace AutomateQuizInputTests
         {
             return new Quiz(new List<string> { "Quiz 10", "1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "2) Question 2", "1", "2*", "" }, "1");
         }
+
+        public static List<string> GetMockPageInputData()
+        {
+            return new List<string>
+            {
+                "Quiz 1", "50", "51", "2", "", "Quiz 2", "100", "101", "51"
+            };
+        }
+
+        public static List<PageContainer> GetMockPageContainers()
+        {
+            var pages = new List<PageContainer>();
+            pages.Add(new PageContainer { QuizPageNumber = 50, SuccessPageNumber = 51, FailPageNumber = 2 });
+            pages.Add(new PageContainer { QuizPageNumber = 100, SuccessPageNumber = 101, FailPageNumber = 51 });
+            return pages;
+        }
     }
 }
