@@ -10,6 +10,7 @@ namespace AutomateQuizInputTests
     public class PageTests
     {
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void GetPages_ShouldThrowException_WhenQuizzesAndPagesUnequal()
         {
             // arrange
@@ -18,14 +19,24 @@ namespace AutomateQuizInputTests
             PageContainer pageContainer = new PageContainer();
 
             // act
+            pageContainer.GetPages(pages, quizzes.Count);
 
             // assert
-            // Assert.ThrowsException<Exception>(pageContainer.GetPages(pages, quizzes.Count));
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void InsertPages_ShouldThrowException_WhenCountOfQuizListAndPageObjectsUnequal()
         {
+            // arrange
+            var quizzes = new List<Quiz>();
+            var pages = TestAuxiliaryMethods.GetMockPageContainers();
+            PageContainer pageContainer = new PageContainer();
+
+            // act 
+            pageContainer.InsertPages(quizzes, pages);
+
+            // assert
 
         }
     }

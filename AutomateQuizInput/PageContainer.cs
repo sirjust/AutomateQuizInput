@@ -34,18 +34,18 @@ namespace AutomateQuizInput
             return pages;
         }
 
-        public void InsertPages(List<Quiz> quizzes, IEnumerable<PageContainer> pageObjects)
+        public void InsertPages(List<Quiz> quizzes, IList<PageContainer> pageObjects)
         {
-            var pageList = pageObjects.ToList();
-            if(quizzes.Count != pageList.Count)
+            if(quizzes.Count != pageObjects.Count)
             {
                 throw new Exception();
             }
+
             for (int i=0; i < quizzes.Count(); i++)
             {
-                quizzes[i].CoursePage = pageList[i].QuizPageNumber;
-                quizzes[i].PassPage = pageList[i].SuccessPageNumber;
-                quizzes[i].FailPage = pageList[i].FailPageNumber;
+                quizzes[i].CoursePage = pageObjects[i].QuizPageNumber;
+                quizzes[i].PassPage = pageObjects[i].SuccessPageNumber;
+                quizzes[i].FailPage = pageObjects[i].FailPageNumber;
             }
         }
     }
