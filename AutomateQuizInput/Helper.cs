@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutomateQuizInput
@@ -54,8 +55,9 @@ namespace AutomateQuizInput
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Window.Maximize();
-            
-                driver.FindElement(By.Name("course_id")).Click();
+            driver.FindElement(By.Name("course_id")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.FindElement(By.Name("course_id")).Click();
                 new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
@@ -73,6 +75,9 @@ namespace AutomateQuizInput
                 decimal passfailpercant = quizzes.PassFailPercent;
                 string imagepath = quizzes.ImagePath;
                 string comment = quizzes.Comment;
+                IWebElement element6 = wait.Until(d => d.FindElement(By.Name("quiz_status")));
+                element6.Click();
+                element6.SendKeys("A");
                 IWebElement element = wait.Until(d => d.FindElement(By.Name("course_page")));
                 element.Click();
                 element.SendKeys(coursepage.ToString());
@@ -216,6 +221,11 @@ namespace AutomateQuizInput
                 }
             }
             return questions;
+        }
+
+        public static void InsertPages(IEnumerable<Quiz> quizzes, IEnumerable<PageContainer> pages)
+        {
+
         }
     }
 }
