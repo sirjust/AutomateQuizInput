@@ -24,6 +24,8 @@ namespace AutomateQuizInput
                 Quiz quiz = new Quiz(quizData, courseId);
                 completeQuizzes.Add(quiz);
             }
+
+            var pageDocLines = Helper.ReadDocument(@"../../Docs/PageInfo.txt");
             // input data from the quizzes into the admin portal using the ui
             //List<string> complete = Helper.SeparateQuizzes(allLines);
             Helper.OpenWebpage();
