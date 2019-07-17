@@ -25,7 +25,12 @@ namespace AutomateQuizInput
                 completeQuizzes.Add(quiz);
             }
 
+            // add three page numbers to each quiz using the PageInfo document
+            PageContainer pageContainer = new PageContainer();
             var pageDocLines = Helper.ReadDocument(@"../../Docs/PageInfo.txt");
+            var pages = pageContainer.GetPages(pageDocLines, completeQuizzes.Count());
+            pageContainer.InsertPages(completeQuizzes, pages.ToList());
+
             // input data from the quizzes into the admin portal using the ui
             //List<string> complete = Helper.SeparateQuizzes(allLines);
             Helper.OpenWebpage();
