@@ -37,7 +37,26 @@ namespace AutomateQuizInputTests
             pageContainer.InsertPages(quizzes, pages);
 
             // assert
+        }
 
+        [TestMethod]
+        public void InsertPages_ShouldInsertCorrectPagesToQuizzes()
+        {
+            // arrange
+            var quizzes = new List<Quiz>
+            {
+                TestAuxiliaryMethods.GetMockQuiz(),
+                TestAuxiliaryMethods.GetMockQuiz()
+            };
+            var pages = TestAuxiliaryMethods.GetMockPageContainers();
+            PageContainer pageContainer = new PageContainer();
+
+            // act 
+            pageContainer.InsertPages(quizzes, pages);
+
+            // assert
+            Assert.AreEqual(pages[0].QuizPageNumber, quizzes[0].CoursePage);
+            Assert.AreEqual(pages[1].QuizPageNumber, quizzes[1].CoursePage);
         }
     }
 }
