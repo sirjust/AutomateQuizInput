@@ -167,7 +167,7 @@ namespace AutomateQuizInput
             return questions;
         }
 
-        public static void InsertPages(IEnumerable<Quiz> quizzes, IEnumerable<PageObject> pages)
+        public static void InsertPages(IEnumerable<Quiz> quizzes, IEnumerable<PageContainer> pages)
         {
 
         }

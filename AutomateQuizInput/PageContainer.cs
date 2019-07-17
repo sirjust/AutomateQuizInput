@@ -4,17 +4,17 @@ using System.Linq;
 
 namespace AutomateQuizInput
 {
-    public class PageObject
+    public class PageContainer
     {
         public int QuizNumber { get; set; } = default;
         public int QuizPageNumber { get; set; }
         public int SuccessPageNumber { get; set; }
         public int FailPageNumber { get; set; }
 
-        public IEnumerable<PageObject> GetPages(IEnumerable<string> rawLines, int numberOfQuizzes)
+        public IEnumerable<PageContainer> GetPages(IEnumerable<string> rawLines, int numberOfQuizzes)
         {
             var quizCount = rawLines.Count(x => x.Contains("Quiz"));
-            List<PageObject> pages = new List<PageObject>();
+            List<PageContainer> pages = new List<PageContainer>();
             if(numberOfQuizzes != quizCount)
             {
                 throw new Exception();
@@ -23,7 +23,7 @@ namespace AutomateQuizInput
             foreach(var l in separatedQuizzes)
             {
                 var myObject = l.ToList();
-                var pageObject = new PageObject
+                var pageObject = new PageContainer
                 {
                     QuizPageNumber = Convert.ToInt32(myObject[1]),
                     SuccessPageNumber = Convert.ToInt32(myObject[2]),
@@ -34,9 +34,9 @@ namespace AutomateQuizInput
             return pages;
         }
 
-        public void InsertPages(List<Quiz> quizzes, IEnumerable<PageObject> pageobjects)
+        public void InsertPages(List<Quiz> quizzes, IEnumerable<PageContainer> pageObjects)
         {
-            var pageList = pageobjects.ToList();
+            var pageList = pageObjects.ToList();
             if(quizzes.Count != pageList.Count)
             {
                 throw new Exception();
