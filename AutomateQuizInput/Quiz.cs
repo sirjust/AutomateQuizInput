@@ -44,6 +44,7 @@ namespace AutomateQuizInput
                 {
                     int i = int.Parse(value);
                     //Console.WriteLine("number:{0}", i);
+
                     QuizId = Convert.ToInt32(i);
                 }
             }

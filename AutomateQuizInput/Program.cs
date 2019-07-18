@@ -33,7 +33,7 @@ namespace AutomateQuizInput
 
             // input data from the quizzes into the admin portal using the ui
             //List<string> complete = Helper.SeparateQuizzes(allLines);
-            Helper.OpenWebpage();
+            Helper.OpenWebpage(completeQuizzes);
 
             foreach(Quiz quiz in completeQuizzes)
             {
