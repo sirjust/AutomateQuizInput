@@ -18,8 +18,6 @@ namespace AutomateQuizInput
             var allLines = Helper.ReadDocument(path);
             var separatedQuizzes = Helper.SeparateQuizzes(allLines);
             List<Quiz> completeQuizzes = new List<Quiz>();
-            List<string> list = new List<string>();
-            var genequestion = Helper.GenerateQuestions(list);
             foreach(var quizData in separatedQuizzes)
             {
                 // instantiate a quiz using the data in the list
