@@ -35,11 +35,11 @@ namespace AutomateQuizInput
             //List<string> complete = Helper.SeparateQuizzes(allLines);
             Helper.OpenWebpage(completeQuizzes);
 
-            foreach(Quiz quiz in completeQuizzes)
-            {
-                var text = quiz.InputQuizTask(quiz);
-                Console.WriteLine(text);
-            }
+            //foreach(Quiz quiz in completeQuizzes)
+            //{
+            //    var text = quiz.InputQuizTask(quiz);
+            //    Console.WriteLine(text);
+            //}
             Console.ReadLine();
         }
     }
