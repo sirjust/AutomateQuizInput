@@ -105,7 +105,8 @@ namespace AutomateQuizInput
                 {
                     int questionId = quest.QuestionId;
                     string questionText = quest.QuestionText;
-                    int CorrectAnswerIndex = quest.CorrectAnswerIndex;
+                    // we add one to this value because the portal isn't zero-based
+                    int CorrectAnswerIndex = quest.CorrectAnswerIndex + 1;
                     string questStatus = quest.QuestionStatus;
                     string qType = quest.QuestionType;
                     
@@ -120,29 +121,12 @@ namespace AutomateQuizInput
                     qtext.Click();
                     qtext.Clear();
                     qtext.SendKeys(questionText);
-                    IWebElement a1 = wait.Until(d => d.FindElement(By.Name("q_a1")));
-                    a1.Click();
-                    a1.Clear();
-                    a1.SendKeys(quest.Answers[0]);
-                    IWebElement a2 = wait.Until(d => d.FindElement(By.Name("q_a2")));
-                    a2.Click();
-                    a2.Clear();
-                    a2.SendKeys(quest.Answers[1]);
-                    IWebElement a3 = wait.Until(d => d.FindElement(By.Name("q_a3")));
-                    a3.Click();
-                    a3.Clear();
-                    a3.SendKeys(quest.Answers[2]);
-                    IWebElement a4 = wait.Until(d => d.FindElement(By.Name("q_a4")));
-                    a4.Click();
-                    a4.Clear();
-                    a4.SendKeys(quest.Answers[3]);
-                    IWebElement a5 = wait.Until(d => d.FindElement(By.Name("q_a5")));
-                    a5.Click();
-                    a5.Clear();
-                    a5.SendKeys("78");
+                    for(int i = 0; i<quest.Answers.Count(); i++)
+                    {
+                        IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i+1}")));
+                        answerText.SendKeys(quest.Answers[i]);
+                    }
                     IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
-                    qCorrect.Click();
-                    qCorrect.Clear();
                     qCorrect.SendKeys(CorrectAnswerIndex.ToString()); 
                     IWebElement qimage = wait.Until(d => d.FindElement(By.Name("q_image_path")));
                     qimage.Click();
@@ -152,7 +136,6 @@ namespace AutomateQuizInput
                     q_comment.SendKeys("Test");
                     driver.FindElement(By.Name("button_action")).Click();
                     //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
-                    
                 }
                 
                 ///driver.FindElement(By.Name("button_action")).Click();
