@@ -57,7 +57,6 @@ namespace AutomateQuizInput
             driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("course_id")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            
             //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
             //addbtn.Click();
             //Loop through all the quiz fields on by one with default values
@@ -110,7 +109,6 @@ namespace AutomateQuizInput
                     int CorrectAnswerIndex = quizzes.Questions[j].CorrectAnswerIndex + 1;
                     string questStatus = quizzes.Questions[j].QuestionStatus;
                     string qType = quizzes.Questions[j].QuestionType;
-
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
                     qstatus.Click();
                     qstatus.SendKeys(questStatus);
@@ -140,12 +138,8 @@ namespace AutomateQuizInput
                     {
                         driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                     }
-
-
                 }
-
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
-
             }
             Console.WriteLine("Program has completed. !Successfully");
             return driver;
