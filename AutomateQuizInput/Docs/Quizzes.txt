@@ -496,5 +496,4 @@ Quiz 7
 5) In an attic, it is required that a 120-volt receptacle and a lighting fixture be placed near the appliance?
 True*
 False
-Quiz 10
-1) Testing purpose
+

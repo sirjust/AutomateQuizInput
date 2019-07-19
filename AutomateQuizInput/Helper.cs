@@ -57,15 +57,16 @@ namespace AutomateQuizInput
             driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("course_id")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.FindElement(By.Name("course_id")).Click();
-                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+            
             //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
             //addbtn.Click();
             //Loop through all the quiz fields on by one with default values
             foreach (Quiz quizzes in quiz)
             {
+                driver.FindElement(By.Name("course_id")).Click();
+                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
                 string courseid = quizzes.CourseId;
                 int quizid = quizzes.QuizId;
                 string status = quizzes.Status;
@@ -101,49 +102,33 @@ namespace AutomateQuizInput
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                 //foreach quiz question
-                foreach (var quest in quizzes.Questions)
+                for (int j = 0; j < quizzes.Questions.Count; j++)
                 {
-                    int questionId = quest.QuestionId;
-                    string questionText = quest.QuestionText;
-                    int CorrectAnswerIndex = quest.CorrectAnswerIndex;
-                    string questStatus = quest.QuestionStatus;
-                    string qType = quest.QuestionType;
-                    
+                    int questionId = quizzes.Questions[j].QuestionId;
+                    string questionText = quizzes.Questions[j].QuestionText;
+                    // we add one to this value because the portal isn't zero-based
+                    int CorrectAnswerIndex = quizzes.Questions[j].CorrectAnswerIndex + 1;
+                    string questStatus = quizzes.Questions[j].QuestionStatus;
+                    string qType = quizzes.Questions[j].QuestionType;
+
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
                     qstatus.Click();
-                    qstatus.SendKeys(questStatus="A");
+                    qstatus.SendKeys(questStatus);
                     IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
                     qtype.Click();
                     qtype.Clear();
-                    qtype.SendKeys(qType="M");
+                    qtype.SendKeys(qType = "M");
                     IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
                     qtext.Click();
                     qtext.Clear();
                     qtext.SendKeys(questionText);
-                    IWebElement a1 = wait.Until(d => d.FindElement(By.Name("q_a1")));
-                    a1.Click();
-                    a1.Clear();
-                    a1.SendKeys(quest.Answers[0]);
-                    IWebElement a2 = wait.Until(d => d.FindElement(By.Name("q_a2")));
-                    a2.Click();
-                    a2.Clear();
-                    a2.SendKeys(quest.Answers[1]);
-                    IWebElement a3 = wait.Until(d => d.FindElement(By.Name("q_a3")));
-                    a3.Click();
-                    a3.Clear();
-                    a3.SendKeys(quest.Answers[2]);
-                    IWebElement a4 = wait.Until(d => d.FindElement(By.Name("q_a4")));
-                    a4.Click();
-                    a4.Clear();
-                    a4.SendKeys(quest.Answers[3]);
-                    IWebElement a5 = wait.Until(d => d.FindElement(By.Name("q_a5")));
-                    a5.Click();
-                    a5.Clear();
-                    a5.SendKeys("78");
+                    for (int i = 0; i < quizzes.Questions[j].Answers.Count(); i++)
+                    {
+                        IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
+                        answerText.SendKeys(quizzes.Questions[j].Answers[i]);
+                    }
                     IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
-                    qCorrect.Click();
-                    qCorrect.Clear();
-                    qCorrect.SendKeys(CorrectAnswerIndex.ToString()); 
+                    qCorrect.SendKeys(CorrectAnswerIndex.ToString());
                     IWebElement qimage = wait.Until(d => d.FindElement(By.Name("q_image_path")));
                     qimage.Click();
                     IWebElement q_comment = wait.Until(d => d.FindElement(By.Name("q_comment")));
@@ -151,23 +136,18 @@ namespace AutomateQuizInput
                     q_comment.Clear();
                     q_comment.SendKeys("Test");
                     driver.FindElement(By.Name("button_action")).Click();
-                    var i = 1;
-                    if (quizzes.Questions.Count < quizzes.Questions.Count-1)
+                    if (j < quizzes.Questions.Count - 1)
                     {
-                        driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
-                        i = quizzes.Questions.Count - 1;
-
+                        driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                     }
-                    driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
+
 
                 }
+
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
-                driver.FindElement(By.Name("course_id")).Click();
-                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
 
             }
+            Console.WriteLine("Program has completed. !Successfully");
             return driver;
         }
 
