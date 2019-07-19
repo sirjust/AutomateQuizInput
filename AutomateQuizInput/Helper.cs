@@ -57,15 +57,15 @@ namespace AutomateQuizInput
             driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("course_id")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.FindElement(By.Name("course_id")).Click();
-            new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
             //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
             //addbtn.Click();
             //Loop through all the quiz fields on by one with default values
             foreach (Quiz quizzes in quiz)
             {
+                driver.FindElement(By.Name("course_id")).Click();
+                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
                 string courseid = quizzes.CourseId;
                 int quizid = quizzes.QuizId;
                 string status = quizzes.Status;
@@ -75,59 +75,58 @@ namespace AutomateQuizInput
                 decimal passfailpercant = quizzes.PassFailPercent;
                 string imagepath = quizzes.ImagePath;
                 string comment = quizzes.Comment;
-                IWebElement element6 = wait.Until(d => d.FindElement(By.Name("quiz_status")));
-                element6.Click();
-                element6.SendKeys("A");
-                IWebElement element = wait.Until(d => d.FindElement(By.Name("course_page")));
-                element.Click();
-                element.SendKeys(coursepage.ToString());
-                IWebElement element2 = wait.Until(d => d.FindElement(By.Name("course_pass_page")));
-                element2.Click();
-                element2.SendKeys(coursepasspage.ToString());
+                IWebElement quiz_status = wait.Until(d => d.FindElement(By.Name("quiz_status")));
+                quiz_status.Click();
+                quiz_status.SendKeys(status);
+                IWebElement course_page = wait.Until(d => d.FindElement(By.Name("course_page")));
+                course_page.Click();
+                course_page.SendKeys(coursepage.ToString());
+                IWebElement course_pass_page = wait.Until(d => d.FindElement(By.Name("course_pass_page")));
+                course_pass_page.Click();
+                course_pass_page.SendKeys(coursepasspage.ToString());
                 driver.FindElement(By.XPath("//td/table[2]")).Click();
-                IWebElement element3 = wait.Until(d => d.FindElement(By.Name("course_fail_page")));
-                element3.Click();
-                element3.SendKeys(coursefailpage.ToString());
-                IWebElement element4 = wait.Until(d => d.FindElement(By.Name("pass_fail_percent")));
-                element4.Click();
-                element4.SendKeys(passfailpercant.ToString());
+                IWebElement course_fail_page = wait.Until(d => d.FindElement(By.Name("course_fail_page")));
+                course_fail_page.Click();
+                course_fail_page.SendKeys(coursefailpage.ToString());
+                IWebElement pass_fail_percent = wait.Until(d => d.FindElement(By.Name("pass_fail_percent")));
+                pass_fail_percent.Click();
+                pass_fail_percent.SendKeys(passfailpercant.ToString());
                 driver.FindElement(By.Name("quiz_image_path")).Click();
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Quiz Image Path'])[1]/following::option[1]")).Click();
                 driver.FindElement(By.Name("quiz_image_path")).Click();
-                IWebElement element5 = wait.Until(d => d.FindElement(By.Name("quiz_comment")));
-                element5.Click();
-                element5.SendKeys(comment="Text");
+                IWebElement quiz_comment = wait.Until(d => d.FindElement(By.Name("quiz_comment")));
+                quiz_comment.Click();
+                quiz_comment.SendKeys(comment="Text");
                 driver.FindElement(By.Name("button_action")).Click();
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                 //foreach quiz question
-                foreach (var quest in quizzes.Questions)
+                for (int j = 0; j < quizzes.Questions.Count; j++)
                 {
-                    int questionId = quest.QuestionId;
-                    string questionText = quest.QuestionText;
+                    int questionId = quizzes.Questions[j].QuestionId;
+                    string questionText = quizzes.Questions[j].QuestionText;
                     // we add one to this value because the portal isn't zero-based
-                    int CorrectAnswerIndex = quest.CorrectAnswerIndex + 1;
-                    string questStatus = quest.QuestionStatus;
-                    string qType = quest.QuestionType;
-                    
+                    int CorrectAnswerIndex = quizzes.Questions[j].CorrectAnswerIndex + 1;
+                    string questStatus = quizzes.Questions[j].QuestionStatus;
+                    string qType = quizzes.Questions[j].QuestionType;
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
                     qstatus.Click();
-                    qstatus.SendKeys(questStatus="A");
+                    qstatus.SendKeys(questStatus);
                     IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
                     qtype.Click();
                     qtype.Clear();
-                    qtype.SendKeys(qType="M");
+                    qtype.SendKeys(qType = "M");
                     IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
                     qtext.Click();
                     qtext.Clear();
                     qtext.SendKeys(questionText);
-                    for(int i = 0; i<quest.Answers.Count(); i++)
+                    for (int i = 0; i < quizzes.Questions[j].Answers.Count(); i++)
                     {
-                        IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i+1}")));
-                        answerText.SendKeys(quest.Answers[i]);
+                        IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
+                        answerText.SendKeys(quizzes.Questions[j].Answers[i]);
                     }
                     IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
-                    qCorrect.SendKeys(CorrectAnswerIndex.ToString()); 
+                    qCorrect.SendKeys(CorrectAnswerIndex.ToString());
                     IWebElement qimage = wait.Until(d => d.FindElement(By.Name("q_image_path")));
                     qimage.Click();
                     IWebElement q_comment = wait.Until(d => d.FindElement(By.Name("q_comment")));
@@ -135,15 +134,14 @@ namespace AutomateQuizInput
                     q_comment.Clear();
                     q_comment.SendKeys("Test");
                     driver.FindElement(By.Name("button_action")).Click();
-                    //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
+                    if (j < quizzes.Questions.Count - 1)
+                    {
+                        driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
+                    }
                 }
-                
-                ///driver.FindElement(By.Name("button_action")).Click();
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
-                //driver.FindElement(By.Name("button_action")).Click();
-                //driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
-
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
             }
+            Console.WriteLine("Program has completed. !Successfully");
             return driver;
         }
 
