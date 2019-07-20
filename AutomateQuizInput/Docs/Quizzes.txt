@@ -194,7 +194,7 @@ False
 True*
 False
 
-10) Listed water heaters are NOT required to be installed in accordance with their manufacturers' instructions.
+10) Listed water heaters are NOT required to be installed in accordance with their manufacturers instructions.
 True
 False*
 
@@ -210,7 +210,7 @@ False
 True
 False*
 
-14) Installation of temperature, pressure, and vacuum relief devices and automatic gas shutoff devices, shall be in accordance with the terms of their listings and NOT the manufacturers' instructions.
+14) Installation of temperature, pressure, and vacuum relief devices and automatic gas shutoff devices, shall be in accordance with the terms of their listings and NOT the manufacturers instructions.
 True
 False*
 

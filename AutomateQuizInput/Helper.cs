@@ -26,15 +26,15 @@ namespace AutomateQuizInput
             List<List<string>> initialSeparatedList = new List<List<string>>();
             List<string> quizList = new List<string>();
 
-            for (int i = 0; i< lineList.Count; i++)
+            for (int i = 0; i < lineList.Count; i++)
             {
                 quizList.Add(lineList[i]);
-                if(i == lineList.Count - 1)
+                if (i == lineList.Count - 1)
                 {
                     List<string> temp = quizList.ToList();
                     initialSeparatedList.Add(temp);
                 }
-                else if (lineList[i+1].Contains("Quiz"))
+                else if (lineList[i + 1].Contains("Quiz"))
                 {
                     List<string> temp = quizList.ToList();
                     initialSeparatedList.Add(temp);
@@ -44,11 +44,10 @@ namespace AutomateQuizInput
             return initialSeparatedList;
         }
 
-     
-        public static IWebDriver OpenWebpage(List<Quiz> quiz)
+
+        public static IWebDriver UploadTask(List<Quiz> quiz)
         {
             IWebDriver driver;
-            //List<Quiz> quiz = new List<Quiz>();
             driver = new FirefoxDriver(@"../../../packages/Selenium.Firefox.WebDriver.0.24.0/driver/")
             {
                 Url = $"https://{LoginInfo.username}:{LoginInfo.password}@www.anytimece.com/cgi-bin/admin/course_pick_form"
@@ -57,8 +56,6 @@ namespace AutomateQuizInput
             driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("course_id")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //IWebElement addbtn = wait.Until(d => d.FindElement(By.XPath("//input[@value='Add Quiz']")));
-            //addbtn.Click();
             //Loop through all the quiz fields on by one with default values
             foreach (Quiz quizzes in quiz)
             {
@@ -75,9 +72,6 @@ namespace AutomateQuizInput
                 decimal passfailpercant = quizzes.PassFailPercent;
                 string imagepath = quizzes.ImagePath;
                 string comment = quizzes.Comment;
-                IWebElement quiz_status = wait.Until(d => d.FindElement(By.Name("quiz_status")));
-                quiz_status.Click();
-                quiz_status.SendKeys(status);
                 IWebElement course_page = wait.Until(d => d.FindElement(By.Name("course_page")));
                 course_page.Click();
                 course_page.SendKeys(coursepage.ToString());
@@ -91,12 +85,6 @@ namespace AutomateQuizInput
                 IWebElement pass_fail_percent = wait.Until(d => d.FindElement(By.Name("pass_fail_percent")));
                 pass_fail_percent.Click();
                 pass_fail_percent.SendKeys(passfailpercant.ToString());
-                driver.FindElement(By.Name("quiz_image_path")).Click();
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Quiz Image Path'])[1]/following::option[1]")).Click();
-                driver.FindElement(By.Name("quiz_image_path")).Click();
-                IWebElement quiz_comment = wait.Until(d => d.FindElement(By.Name("quiz_comment")));
-                quiz_comment.Click();
-                quiz_comment.SendKeys(comment="Text");
                 driver.FindElement(By.Name("button_action")).Click();
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
@@ -127,12 +115,6 @@ namespace AutomateQuizInput
                     }
                     IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
                     qCorrect.SendKeys(CorrectAnswerIndex.ToString());
-                    IWebElement qimage = wait.Until(d => d.FindElement(By.Name("q_image_path")));
-                    qimage.Click();
-                    IWebElement q_comment = wait.Until(d => d.FindElement(By.Name("q_comment")));
-                    q_comment.Click();
-                    q_comment.Clear();
-                    q_comment.SendKeys("Test");
                     driver.FindElement(By.Name("button_action")).Click();
                     if (j < quizzes.Questions.Count - 1)
                     {
@@ -183,7 +165,6 @@ namespace AutomateQuizInput
                     questionId = Convert.ToInt32(char.GetNumericValue(quizDataList[i].First()));
                     // If so, that line is the question line
                     questionText = quizDataList[i];
-                    Console.WriteLine($"Question {questionId}: {questionText}");
                 }
 
                 else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{2}\)+)"))
@@ -192,7 +173,6 @@ namespace AutomateQuizInput
                     questionId = Convert.ToInt32(quizDataList[i].Substring(0, 2));
                     // If so, that line is the question line
                     questionText = quizDataList[i];
-                    Console.WriteLine($"Question {questionId}: {questionText}");
                 }
 
                 // The next lines until the blank line are the potential answers
@@ -202,11 +182,6 @@ namespace AutomateQuizInput
                 }
             }
             return questions;
-        }
-
-        public static void InsertPages(IEnumerable<Quiz> quizzes, IEnumerable<PageContainer> pages)
-        {
-
         }
     }
 }

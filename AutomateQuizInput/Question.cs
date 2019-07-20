@@ -13,7 +13,7 @@ namespace AutomateQuizInput
         public string QuestionText { get; set; }
         public List<string> Answers { get; set; }
         public int CorrectAnswerIndex { get; set; }
-        public string QuestionStatus { get; set; }
+        public string QuestionStatus { get; set; } = "A";
         public string QuestionType { get; set; }
 
         public Question(int id = default, string questionText = default, List<string> answers = default, int correctAnswerIndex = default)
