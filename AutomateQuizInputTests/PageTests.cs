@@ -10,7 +10,7 @@ namespace AutomateQuizInputTests
     public class PageTests
     {
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void GetPages_ShouldThrowException_WhenQuizzesAndPagesUnequal()
         {
             // arrange

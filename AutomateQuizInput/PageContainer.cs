@@ -17,7 +17,7 @@ namespace AutomateQuizInput
             List<PageContainer> pages = new List<PageContainer>();
             if(numberOfQuizzes != quizCount)
             {
-                throw new Exception();
+                throw new ArgumentException("The number of quizzes in Quizzes.txt and PageInfo.txt is different.");
             }
             List<IEnumerable<string>> separatedQuizzes = Helper.SeparateQuizzes(rawLines).ToList();
             foreach(var l in separatedQuizzes)
