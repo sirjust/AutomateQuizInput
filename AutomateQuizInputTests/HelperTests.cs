@@ -42,7 +42,7 @@ namespace AutomateQuizInputTests
             // arrange
             string expected = "World!";
             // act
-            var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\TextFile.txt").ToList();
+            var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\Test\TextFile.txt").ToList();
             // assert
             Assert.AreEqual(expected, result[1]);
         }

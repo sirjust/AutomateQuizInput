@@ -20,14 +20,25 @@ namespace AutomateQuizInput
                 throw new ArgumentException("The number of quizzes in Quizzes.txt and PageInfo.txt is different.");
             }
             List<IEnumerable<string>> separatedQuizzes = Helper.SeparateQuizzes(rawLines).ToList();
-            foreach(var l in separatedQuizzes)
+            foreach(var list in separatedQuizzes)
             {
-                var myObject = l.ToList();
+                if(list.Count() != 4 || list.Count() != 5)
+                {
+                    throw new ArgumentException($"This {list} doesn't have the correct number of pages. It needs a QuizPage, a SuccessPage, and a FailPage.");
+                }
+                var myObject = list.ToList();
+                bool pageOk = int.TryParse(myObject[1], out int pageNumber);
+                bool successOk = int.TryParse(myObject[2], out int successPage);
+                bool failOk = int.TryParse(myObject[3], out int failPage);
+                if (!pageOk || !successOk || !failOk)
+                {
+                    throw new ArgumentException("One of the page values is not an integer.");
+                }
                 var pageObject = new PageContainer
                 {
-                    QuizPageNumber = Convert.ToInt32(myObject[1]),
-                    SuccessPageNumber = Convert.ToInt32(myObject[2]),
-                    FailPageNumber = Convert.ToInt32(myObject[3])
+                    QuizPageNumber = pageNumber,
+                    SuccessPageNumber = successPage,
+                    FailPageNumber = failPage
                 };
                 pages.Add(pageObject);
             }
@@ -38,7 +49,7 @@ namespace AutomateQuizInput
         {
             if(quizzes.Count != pageObjects.Count)
             {
-                throw new Exception();
+                throw new ArgumentException("The number of quizzes in Quizzes.txt and PageInfo.txt is different.");
             }
 
             for (int i=0; i < quizzes.Count(); i++)
