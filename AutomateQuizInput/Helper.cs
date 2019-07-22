@@ -57,7 +57,6 @@ namespace AutomateQuizInput
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             //Loop through all the quiz fields on by one
-
             foreach (Quiz quiz in quizzes)
             {
                 driver.FindElement(By.Name("course_id")).Click();
@@ -72,28 +71,16 @@ namespace AutomateQuizInput
                 }
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
-                string courseid = quiz.CourseId;
-                int quizid = quiz.QuizId;
-                string status = quiz.Status;
-                int coursepage = quiz.CoursePage;
-                int coursepasspage = quiz.PassPage;
-                int coursefailpage = quiz.FailPage;
-                decimal passfailpercant = quiz.PassFailPercent;
-                string imagepath = quiz.ImagePath;
-                string comment = quiz.Comment;
+
                 IWebElement course_page = wait.Until(d => d.FindElement(By.Name("course_page")));
-                course_page.Click();
-                course_page.SendKeys(coursepage.ToString());
+                course_page.SendKeys(quiz.CoursePage.ToString());
                 IWebElement course_pass_page = wait.Until(d => d.FindElement(By.Name("course_pass_page")));
-                course_pass_page.Click();
-                course_pass_page.SendKeys(coursepasspage.ToString());
+                course_pass_page.SendKeys(quiz.PassPage.ToString());
                 driver.FindElement(By.XPath("//td/table[2]")).Click();
                 IWebElement course_fail_page = wait.Until(d => d.FindElement(By.Name("course_fail_page")));
-                course_fail_page.Click();
-                course_fail_page.SendKeys(coursefailpage.ToString());
+                course_fail_page.SendKeys(quiz.FailPage.ToString());
                 IWebElement pass_fail_percent = wait.Until(d => d.FindElement(By.Name("pass_fail_percent")));
-                pass_fail_percent.Click();
-                pass_fail_percent.SendKeys(passfailpercant.ToString());
+                pass_fail_percent.SendKeys(quiz.PassFailPercent.ToString());
                 driver.FindElement(By.Name("button_action")).Click();
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
@@ -107,14 +94,11 @@ namespace AutomateQuizInput
                     string questStatus = quiz.Questions[j].QuestionStatus;
                     string qType = quiz.Questions[j].QuestionType;
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
-                    qstatus.Click();
                     qstatus.SendKeys(questStatus);
                     IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
-                    qtype.Click();
                     qtype.Clear();
                     qtype.SendKeys(qType = "M");
                     IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
-                    qtext.Click();
                     qtext.Clear();
                     qtext.SendKeys(questionText);
                     for (int i = 0; i < quiz.Questions[j].Answers.Count(); i++)
