@@ -25,7 +25,54 @@ namespace AutomateQuizInputTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetPages_ShouldThrowException_WhenPageValuesNotInteger()
+        {
+            // arrange
+            var quizzes = new List<Quiz> {
+                TestAuxiliaryMethods.GetMockQuiz(),
+                TestAuxiliaryMethods.GetMockQuiz(),
+                TestAuxiliaryMethods.GetMockQuiz()
+            };
+            var pages = TestAuxiliaryMethods.GetMockPageInputData();
+            pages.Add("Quiz 3");
+            pages.Add("hello");
+            pages.Add("world");
+            pages.Add("51"); ;
+
+            PageContainer pageContainer = new PageContainer();
+
+            // act
+            pageContainer.GetPages(pages, quizzes.Count);
+
+            // assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetPages_ShouldThrowException_WhenThereIsTheWrongNumberOfPages()
+        {
+            // arrange
+            var quizzes = new List<Quiz> {
+                TestAuxiliaryMethods.GetMockQuiz(),
+                TestAuxiliaryMethods.GetMockQuiz(),
+                TestAuxiliaryMethods.GetMockQuiz()
+            };
+            var pages = TestAuxiliaryMethods.GetMockPageInputData();
+            pages.Add("Quiz 3");
+            pages.Add("100");
+            pages.Add("50");
+
+            PageContainer pageContainer = new PageContainer();
+
+            // act
+            pageContainer.GetPages(pages, quizzes.Count);
+
+            // assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void InsertPages_ShouldThrowException_WhenCountOfQuizListAndPageObjectsUnequal()
         {
             // arrange

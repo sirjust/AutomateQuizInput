@@ -11,8 +11,8 @@ namespace AutomateQuizInput
         static void Main(string[] args)
         {
             // the text document needs to be in the Docs folder and in the right format
-            Console.WriteLine("This program will automatically input quizzes into the AnytimeCE Admin UI.");
-            Console.WriteLine("What is the CourseID?");
+            Console.WriteLine("This program will automatically input quizzes into the AnytimeCE Admin UI.\nFirst we will go through the provided text documents.");
+            Console.WriteLine("What is the Course Id?\n ***IMPORTANT*** This must match an available course in the portal.");
             string courseId = Console.ReadLine();
             string path = @"../../Docs/Quizzes.txt";
             var allLines = Helper.ReadDocument(path);
@@ -31,15 +31,11 @@ namespace AutomateQuizInput
             var pages = pageContainer.GetPages(pageDocLines, completeQuizzes.Count());
             pageContainer.InsertPages(completeQuizzes, pages.ToList());
 
+            Console.WriteLine("The documents have been successfully read, and we are ready to input your quizzes.");
             // input data from the quizzes into the admin portal using the ui
-            //List<string> complete = Helper.SeparateQuizzes(allLines);
-            Helper.UploadTask(completeQuizzes);
 
-            //foreach(Quiz quiz in completeQuizzes)
-            //{
-            //    var text = quiz.InputQuizTask(quiz);
-            //    Console.WriteLine(text);
-            //}
+            Helper.UploadTask(completeQuizzes);
+            Console.WriteLine("The program has completed successfully. Please check your quizzes in the admin portal.");
             Console.ReadLine();
         }
     }

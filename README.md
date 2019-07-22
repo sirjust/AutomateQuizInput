@@ -1,6 +1,7 @@
 This program automates the process of uploading quizzes using the admin portal of anytimece.com
 
 It requires two perfectly formatted documents: Quizzes.txt and PageInfo.txt
+NOTE: Github has messed with the formatting of this document, so please open it in a text editor for the correct formatting
 An example of the formatting of Quizzes.txt is as follows:
 
 Quiz 1
@@ -46,8 +47,9 @@ Quiz 3
 
 The first number following each quiz refers to the page the quiz is found on, the second number is where the user
 is redirected after successful completion. The final number is the page the user is sent to upon failure.
+
 IMPORTANT: the admin portal requires there be no single quotes (') anywhere in the text. Please conduct a search
 (using ctrl-f) of the single quote and verify the text files are clean of them before running the program.
+
 IMPORTANT: There must be a blank line after every question, including the final question in the document. If it is not
-included, that question will not be input.
 included, that question will not be input.
