@@ -65,7 +65,7 @@ namespace AutomateQuizInput
                 {
                     new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
                 }
-                catch(Exception ex)
+                catch(NoSuchElementException ex)
                 {
                     Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
                     quiz.CourseId = Console.ReadLine();
