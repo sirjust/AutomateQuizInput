@@ -22,7 +22,11 @@ namespace AutomateQuizInput
             List<IEnumerable<string>> separatedQuizzes = Helper.SeparateQuizzes(rawLines).ToList();
             foreach(var list in separatedQuizzes)
             {
-                if(list.Count() != 4 || list.Count() != 5)
+                if(list.Count() < 4)
+                {
+                    throw new ArgumentException($"This {list} doesn't have the correct number of pages. It needs a QuizPage, a SuccessPage, and a FailPage.");
+                }
+                if (list.Count() > 5)
                 {
                     throw new ArgumentException($"This {list} doesn't have the correct number of pages. It needs a QuizPage, a SuccessPage, and a FailPage.");
                 }

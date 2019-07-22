@@ -45,7 +45,7 @@ namespace AutomateQuizInput
         }
 
 
-        public static IWebDriver UploadTask(List<Quiz> quiz)
+        public static IWebDriver UploadTask(List<Quiz> quizzes)
         {
             IWebDriver driver;
             driver = new FirefoxDriver(@"../../../packages/Selenium.Firefox.WebDriver.0.24.0/driver/")
@@ -54,24 +54,33 @@ namespace AutomateQuizInput
             };
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Window.Maximize();
-            driver.FindElement(By.Name("course_id")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //Loop through all the quiz fields on by one with default values
-            foreach (Quiz quizzes in quiz)
+
+            //Loop through all the quiz fields on by one
+
+            foreach (Quiz quiz in quizzes)
             {
                 driver.FindElement(By.Name("course_id")).Click();
-                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText("W2006UPC5WaterHeaterOR_SC");
+                try
+                {
+                    new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
+                    quiz.CourseId = Console.ReadLine();
+                }
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
-                string courseid = quizzes.CourseId;
-                int quizid = quizzes.QuizId;
-                string status = quizzes.Status;
-                int coursepage = quizzes.CoursePage;
-                int coursepasspage = quizzes.PassPage;
-                int coursefailpage = quizzes.FailPage;
-                decimal passfailpercant = quizzes.PassFailPercent;
-                string imagepath = quizzes.ImagePath;
-                string comment = quizzes.Comment;
+                string courseid = quiz.CourseId;
+                int quizid = quiz.QuizId;
+                string status = quiz.Status;
+                int coursepage = quiz.CoursePage;
+                int coursepasspage = quiz.PassPage;
+                int coursefailpage = quiz.FailPage;
+                decimal passfailpercant = quiz.PassFailPercent;
+                string imagepath = quiz.ImagePath;
+                string comment = quiz.Comment;
                 IWebElement course_page = wait.Until(d => d.FindElement(By.Name("course_page")));
                 course_page.Click();
                 course_page.SendKeys(coursepage.ToString());
@@ -89,14 +98,14 @@ namespace AutomateQuizInput
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                 //foreach quiz question
-                for (int j = 0; j < quizzes.Questions.Count; j++)
+                for (int j = 0; j < quiz.Questions.Count; j++)
                 {
-                    int questionId = quizzes.Questions[j].QuestionId;
-                    string questionText = quizzes.Questions[j].QuestionText;
+                    int questionId = quiz.Questions[j].QuestionId;
+                    string questionText = quiz.Questions[j].QuestionText;
                     // we add one to this value because the portal isn't zero-based
-                    int CorrectAnswerIndex = quizzes.Questions[j].CorrectAnswerIndex + 1;
-                    string questStatus = quizzes.Questions[j].QuestionStatus;
-                    string qType = quizzes.Questions[j].QuestionType;
+                    int CorrectAnswerIndex = quiz.Questions[j].CorrectAnswerIndex + 1;
+                    string questStatus = quiz.Questions[j].QuestionStatus;
+                    string qType = quiz.Questions[j].QuestionType;
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
                     qstatus.Click();
                     qstatus.SendKeys(questStatus);
@@ -108,22 +117,21 @@ namespace AutomateQuizInput
                     qtext.Click();
                     qtext.Clear();
                     qtext.SendKeys(questionText);
-                    for (int i = 0; i < quizzes.Questions[j].Answers.Count(); i++)
+                    for (int i = 0; i < quiz.Questions[j].Answers.Count(); i++)
                     {
                         IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
-                        answerText.SendKeys(quizzes.Questions[j].Answers[i]);
+                        answerText.SendKeys(quiz.Questions[j].Answers[i]);
                     }
                     IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
                     qCorrect.SendKeys(CorrectAnswerIndex.ToString());
                     driver.FindElement(By.Name("button_action")).Click();
-                    if (j < quizzes.Questions.Count - 1)
+                    if (j < quiz.Questions.Count - 1)
                     {
                         driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
                     }
                 }
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
             }
-            Console.WriteLine("Program has completed. !Successfully");
             return driver;
         }
 
