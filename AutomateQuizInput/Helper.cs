@@ -111,7 +111,7 @@ namespace AutomateQuizInput
                     string qType = quizzes.Questions[j].QuestionType;
                     IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
                     qstatus.Click();
-                    qstatus.SendKeys(questStatus);
+                    qstatus.SendKeys(questStatus="G");
                     IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
                     qtype.Click();
                     qtype.Clear();
@@ -177,7 +177,7 @@ namespace AutomateQuizInput
                 }
 
                 // Check if there is a number and a close parentheses
-                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1}\)+)"))
+                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1}\.+)"))
                 {
                     // check if there is one number at the start
                     questionId = Convert.ToInt32(char.GetNumericValue(quizDataList[i].First()));

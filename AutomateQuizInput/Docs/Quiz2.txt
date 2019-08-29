@@ -1,0 +1,722 @@
+Quiz 1 
+1. The Uniform Plumbing Code Chapter 16 covers the installation, construction, alteration, and repair of _______.
+potable water storage components stormwater detention 
+nonpotable rainwater catchment systems*
+water purification systems
+public utility sewers
+
+2. The Authority Having Jurisdiction (AHJ) must approve or may even require _______ to be used in lieu of potable water for some applications.
+stormwater runoff
+captured nonpotable rainwater*
+potable gray water
+potable black water
+frozen gray water
+
+3. Piping and components used in a rainwater catchment system must be _______.
+plumbing contractor approved
+owner approved
+acceptable to the maintenance supervisor
+manufactured locally
+listed*
+
+4. Listed fittings are permitted to be used in rainwater catchment systems.
+Yes, they are not only permitted, they are required.*
+Yes, they can be used, but they are not recommended.
+No, they are not permitted for use.
+No, they are not permitted unless specifically approved by the AHJ.
+Yes, they should be used provided the property owner agrees.
+
+5. The person(s) who design(s) rainwater catchment systems must be registered or licensed or meet the requirements of _______.
+the property owner
+the International Association of Plumbers and Mechanical Officials
+the AHJ*
+an accredited state university
+the state in which they reside
+
+6. A rainwater catchment system supplying drip irrigation to an orchard requires a licensed plumbing designer.
+Yes, this is always required.
+No, this is not required if the AHJ approves the exception.
+Yes, this is required if the irrigation system is accessible to the public.
+No, this is not required provided the maximum storage does not exceed 360 gallons.*
+No, this is never required.
+
+7. A rainwater catchment system for farm irrigation with multiple 1000-gallon storage tanks must be designed by a registered or licensed plumbing designer.
+True*
+False
+
+8. Single-family dwellings with rainwater catchment system outlets, piping and components located _______ are not required to be designed by a registered or licensed design professional.
+within 100 feet of the dwelling
+inside the building
+on the exterior of the building*
+in an attached garage
+in the basement
+
+9. A permit is not required for the alteration of an existing rainwater catchment system.
+Yes, this is true.
+Yes, this is true provided the system is not for a commercial building.
+No, this is not true.*
+No, not unless the maximum storage exceeds 1000 gallons.
+Yes, this is true if the system is installed on the exterior of the building.
+
+10. A plumbing permit must be obtained from _______ in order to install a rainwater catchment system on premises.
+a plumbing designer
+the state legislature
+the county health authority
+an online permit office
+the AHJ*
+
+11. A permit is not required for exterior rainwater catchment systems used for _______ with a maximum storage capacity of 360 gallons.
+indoor irrigation
+outdoor drip and subsurface irrigation*
+urinal flushing
+potable water tank shortages
+cooking in commercial kitchens
+
+12. A plumbing permit _______ for rainwater catchment systems for single-family dwellings where outlets, piping, and system components are located on the exterior of the building.  
+is not recommended
+is mandatory
+is not required*
+cannot be obtained
+should not be used
+
+13. A single-family dwelling rainwater catchment system that does not require a plumbing permit may still need a permit _______.
+if the AHJ changes his/her mind
+for electrical connections*
+if it’s raining on installation day
+for homes used as rentals
+for piping located on the exterior of the building
+
+14. The _______ of rainwater catchment system components must be properly identified.
+•	component installer
+manufacturer *
+system designer
+system owner 
+country of manufacture
+
+15. The UPC requires that rainwater catchment systems and _______ are inspected and maintained.
+Components*
+installers
+surrounding landscaping
+all trees on the property
+adjacent properties
+
+16. Rainwater catchment systems shall be inspected and maintained in accordance with _______.
+the system designer’s recommendations
+Table 1601.5*
+the property owner’s needs
+the manufacturer’s instructions
+UPC Chapter 8 Indirect Wastes
+
+17. It may be necessary to deviate from the inspection frequency of Table 1601.5 if the _______ requires more frequent inspection and maintenance.
+manufacturer*
+adjacent property owner
+county prosecutor
+system designer
+installer 
+
+18. Table 1601.5 requires that rainwater catchment system caution labels are inspected.
+True*
+False
+
+19. According to Table 1601.5, it is necessary to inspect and clear the debris from aboveground rainwater collection surfaces at least _______.
+every 3 months
+weekly
+every 2 years
+every 6 months*
+annually
+
+Quiz 2
+20. The rainwater catchment system maintenance log shall be maintained by the _______.
+installer
+system designer
+component manufacturer(s)
+property owner or designated appointee*
+AHJ
+
+21. The rainwater catchment system log book must indicate the _______ of inspection and maintenance of each system.
+frequency*
+results
+likelihood
+consequences
+none of the answers provided
+
+22. The required maintenance and inspection of rainwater catchment systems is the responsibility of the property owner _______.
+or the person who obtained the installation permit
+and the system designer
+unless the AHJ has a different requirement*
+provided they are qualified
+for the first 5 years only
+
+23. An operation and maintenance manual for rainwater catchment systems shall be supplied to the property owner by the _______.
+primary installer
+component manufacturer(s)
+plumbing contractor
+AHJ
+none of the answers provided*
+
+24. Which of the following is not required to be included in the system operation and maintenance manual?
+A detailed diagram of the entire system and the location of system components.
+A method of contacting the installer and designer. *
+Details on deactivating the system for maintenance, repair, or other purposes.  
+Details on maintaining the required water quality as determined by the AHJ.
+Instructions for operating and maintaining the system.
+
+25. The system operation and maintenance manual’s testing, inspection and maintenance schedule must be in accordance with _______.
+the property owner’s financial limits
+UPC Chapter 3 General Regulations
+Table 1601.5*
+the requirements of the local jurisdiction
+homeowner’s association requirements
+
+26. The minimum water quality requirements for a rainwater catchment system are determined by the _______.
+average rainfall at the site
+type of aboveground collection surface
+local water testing laboratory
+AHJ*
+property owner’s desires
+
+27. Water treatment is not required for rainwater catchment systems used for aboveground irrigation with a maximum storage capacity of _______.
+360 gallons*
+370 gallons
+1000 gallons
+27 gallons
+2500 gallons
+
+28. Water treatment is not required for rainwater catchment systems used for subsurface or drip _______.  
+habitation
+propagation
+irrigation*
+locations
+amalgamation
+
+29. Which of the following is not required to be compatible in a specific rainwater catchment system?
+pipe and fitting materials
+component materials
+water treatment
+water conditions
+component colors*
+
+30. Controls for pumps, valves, and other devices that contain _______ that come in contact with rainwater supply shall not be permitted.
+nonpotable water
+mercury*
+copper wire
+potable water
+none of the answers provided
+
+31. Rainwater catchment service piping that is installed underground must be _______ the building sewer.
+at least 10 feet from
+laid in the same trench as
+separated from*
+tied into
+installed below
+
+32. Rainwater catchment service piping that shares a trench with sewer piping must be installed _______.
+a minimum of 24 inches below the sewer pipe
+no less than 18 inches from the sewer pipe
+with porous or perforated pipes
+within 6 inches of the sewer pipe
+at least 12 inches above and 12 inches to the side of the sewer pipe*
+
+33. Underground rainwater catchment service piping that crosses a trench containing a sewer pipe must be _______ the sewer pipe.
+no less than 18 inches below
+at least 18 inches from
+not less than 12 inches above*
+touching
+a minimum of 14 inches above
+
+34. Where a potable water pipe shares a trench with a treated nonpotable water pipe and both pipe materials are approved for use within a building, the pipes must be separated _______.
+unless the AHJ approves a different option
+by a nonporous barrier at least 12 inches high
+by 16 inches of gravel
+at least 12 inches horizontally and 12 inches vertically*
+because the nonpotable water could be contaminated by the potable water
+
+35. Where a potable water pipe shares a trench with a treated nonpotable water pipe and both pipe materials are NOT approved for use within a building, the pipes must be separated by _______.
+a minimum of 80 inches
+no more than 48 inches
+a nonporous barrier approved by the AHJ
+at least 12 inches horizontally and 12 inches vertically
+none of the answers provided*
+
+Quiz 3
+36. Rainwater catchment systems that are no longer in use, or _______ in accordance with Section 1601.5, shall be abandoned.
+fail to be maintained*
+were not installed
+did not receive AHJ approval
+don’t have required warning signs posted
+are not readily accessible
+
+37. If only part of a rainwater catchment system is abandoned, then the only required action is to disconnect it from any remaining systems and bury it.
+True
+False*
+
+38. An abandoned rainwater catchment system must be disconnected from remaining systems and then _______.
+removed and disposed of at an approved dumping site
+salvaged for reusable and recyclable components
+drained, plugged and capped in an approved manner*
+buried under no less than 18 inches of gravel and 24 inches of earth
+none of the answers provided
+
+39. In the State of Washington, components of an abandoned rainwater catchment system such as pipe, tubing, fittings and valves are not permitted to be used for _______.
+potable water systems*
+landscape decorations
+black water systems
+garage storage racks
+gray water systems
+
+40. A rainwater catchment system underground tank that has been abandoned must be removed.
+Yes, this is true.
+Yes, but only after approval from the AHJ.
+Yes, or it can be completely drained and filled with an approved material. *
+No, it is not permitted to be removed.
+Yes, but not until it has been completely drained and filled with an approved material.
+
+41. Which of the following is NOT an approved material for filling an abandoned underground water storage tank?
+earth
+sand 
+gravel
+broken glass*
+concrete
+
+42. Rainwater catchment piping shall be sized in accordance with UPC _______ sizing.
+Chapter 5 water heater
+Chapter 9 vent
+Chapter 7 drain
+Chapter 8 indirect waste pipe
+Chapter 6 potable water*
+
+43. According to Table 610.3, rainwater catchment system branch piping that supplies a hose bibb requires a minimum pipe size of _______.
+½ inch*
+¾ inch
+1 inch
+¼ inch
+2 inches
+
+44. The repair of rainwater catchment systems intended to supply landscape water features must be approved by the AHJ.
+True*
+False
+
+45. Which of the following activities pertaining to rainwater catchment systems does NOT require approval from the AHJ?
+installation
+repair
+maintenance*
+alteration
+construction
+
+46. In Washington State, rainwater catchment systems used to supply _______ do not require approval from the AHJ.
+floor sinks
+exterior irrigation*
+water closets
+industrial processes
+cooling tower makeup
+
+47. The UPC states that additional rainwater catchment system design criteria can be found in _______.
+ARCSA / ASPE 63*
+the local public library
+UPC Chapter 8 Indirect Waste
+the County Clerk’s office
+ANSI/ISEA Z358.1-2014
+
+48. In order to obtain a permit for a rainwater catchment system, it is necessary to submit _______ to the AHJ.
+pipe sizes
+a list of component manufacturers
+a complete set of plumbing plans*
+a complete list of components
+the current plumbing code book
+
+49. If a permit was required for the installation of a rainwater catchment system, then it is necessary to obtain approval from the AHJ to _______.
+drain the system
+make changes to the potable water system*
+perform scheduled system maintenance
+perform unscheduled system maintenance
+plant trees near an underground water tank
+
+50. Rainwater catchment systems are not permitted to have a direct connection to _______.
+water storage tanks
+fixtures
+an alternate water source system*
+irrigation systems
+none of the answers provided
+
+51. It is permissible to use a potable water source as makeup water for a rainwater catchment system provided the potable supply connection _______.
+has been approved for this purpose by the AHJ
+is chlorinated and flushed every 6 months
+has components that are approved for use within a building
+is sourced from an on-site well
+is protected by an air gap or backflow preventer*
+
+52. A building containing a portion of a rainwater catchment system cannot be occupied or the system activated until the installer _______ in the presence of the AHJ.
+completes the installation
+flushes the system
+performs the initial cross-connection test*
+requests permission for occupation
+performs a walk-through of the scheduled system maintenance
+
+53. The AHJ cannot grant final approval of a newly installed rainwater catchment system in a building until _______.
+the next business day
+all other authorities having jurisdiction agree to be present
+an accessible location has been designated for the maintenance log book
+the property owner has demonstrated comprehension of the system
+the initial cross-connection test has been ruled successful*
+
+54. The design and size of rainwater drains, gutters, conductors and leaders must comply with the Uniform Plumbing Code _______.
+Chapter 7 Sanitary Drainage
+Chapter 6 Water Supply and Distribution
+Chapter 8 Indirect Wastes
+Chapter 15 Alternate Water Sources for Nonpotable Applications
+none of the answers provided*
+
+55. According to Table 1101.12, a building in a location that receives rain at a rate of 2 in/h that has a 9200-square-foot rooftop collecting rainwater requires a drain pipe that is at least _______ in diameter.
+2-1/2 inches
+7 inches
+4 inches*
+8 inches
+6-1/4 inches
+
+Quiz 4
+56. Rainwater catchment water supply and distribution materials must comply with the requirements of the Uniform Plumbing Code for _______.
+drain materials inside a building
+ferrous pipe plumbing systems
+storm drainage piping
+nonmetallic pipe water systems
+potable water supply and distribution systems*
+
+57. According to Table 604.1, CPVC piping is acceptable for use as water distribution piping.
+True
+False
+
+58. Gutters and downspouts used in rainwater catchment systems must comply with UPC _______.
+Chapter 4 Plumbing Fixtures and Fixture Fittings
+Chapter 6 Water Supply and Distribution
+Chapter 8 Indirect Wastes
+Chapter 11 Storm Drainage*
+Chapter 7 Sanitary Drainage
+
+59. A nonpotable rainwater catchment system collection surface shall be constructed of a _______.
+flat, metallic surface
+surface sloped at least 1 inch per foot
+surface that easily sheds debris
+hard, impervious material*
+nontoxic shingle or coating
+
+60. The signs marking rainwater catchment systems are required to be _______.
+red with white letters
+black with red letters
+purple with white letters
+purple with black letters*
+black with purple letters
+
+61. The signs marking rainwater catchment systems are required to state “_______.”
+CAUTION: NONPOTABLE GRAY WATER, DO NOT DRINK
+WARNING: RAINWATER, DRINK AT YOUR OWN RISK
+CAUTION: NONPOTABLE RECYCLED WATER, DO NOT DRINK
+WARNING: DO NOT DRINK TOILET WATER
+CAUTION: NONPOTABLE RAINWATER, DO NOT DRINK*
+
+62. Outside hose bibbs shall be allowed on rainwater piping systems.
+Yes, but only if the system design doesn’t show another way to access the water.
+Yes, but they must be marked with “CAUTION: NONPOTABLE RAINWATER, DO NOT DRINK.” *
+Yes, but only if they’re truly needed.
+Yes, unless the system is used for drinking water.
+Yes, but they must be marked with “CAUTION: DRINK ONLY WHEN RAINING.”
+
+63. A rainwater catchment system within a building must be provided with the required appurtenances for _______.
+deactivation or drainage*
+pressure testing
+uncovering buried piping
+enclosing pipes inside building walls
+scoping inside of pipes that may be blocked
+
+64. Air and vacuum relief valves are examples of _______ that are required in order to perform a cross-connection test of a rainwater catchment system and potable water system.
+pressure gauges
+appurtenances* 
+air gaps
+drains
+joints
+
+65. Rainwater may only be collected from roof surfaces or other manmade and ______ collection surfaces. 
+metal
+trenched
+plastic
+aboveground*
+porous
+
+66. Rainwater collected from vehicular parking surfaces must be treated in accordance with the UPC requirements for _______.
+on-site treated nonpotable water systems*
+general regulations
+indirect wastes
+firestop protection
+sanitary drainage systems
+
+67. Overflows and bleed-off pipes from roof-mounted equipment and appliances shall not discharge onto roof surfaces _______.
+except in locations that receive very little annual rainfall
+unless approved by the AHJ
+that are intended to collect rainwater*
+with drain pipes less than 3 inches in diameter
+at any time
+
+68. _______ determine(s) the minimum acceptable water quality for harvested rainwater depending upon the water’s intended application.
+Local ordinances
+The AHJ*
+Testing laboratories
+The system designer
+The amount of annual rainfall
+
+69. In the absence of water quality requirements determined by the Authority Having Jurisdiction, the minimum treatment and water quality requirements _______.
+may be determined by the system designer
+must be requested by the property owner
+are based on the standards of state testing laboratories
+do not exist
+shall be in accordance with Table 1602.9.4*
+
+70. According to Table 1602.9.4, the minimum treatment for collected rainwater to be used for water closet flushing includes that particulates _______ are filtered out.
+larger than 100 microns*
+that are microscopic
+smaller than 10 microns
+that are visible to the naked eye
+between 20 microns and 50 microns
+
+Quiz 5
+1602.9.5 [p. 56]
+71. The Uniform Plumbing Code does not specify how rainwater storage tanks are to be constructed.
+True
+False*
+
+72. Rainwater storage tanks shall be constructed of solid, durable materials not subject to excessive corrosion or decay and shall be _______.
+approved by the local water authority
+airtight
+buried underground
+watertight*
+at least 5 gallons
+
+73. Rainwater storage tanks installed above grade _______.
+are not permitted by the UPC
+may be installed only at single-family dwellings
+are permitted by the UPC*
+must be at least 18 inches above the ground
+are required to be nonmetallic
+
+74. Above-grade storage tanks shall be of an opaque material, approved for aboveground use in direct sunlight or _______.  
+may be covered with dirt
+must be installed in a basement
+should be mounted on a rooftop
+shall be shielded from direct sunlight*
+painted with a reflective coating
+
+75. Rainwater storage tanks installed _______ shall be structurally designed to withstand anticipated earth or other loads.
+in basements
+below grade*
+on commercial properties
+adjacent to agricultural fields
+none of the answers provided
+
+76. Which of the following is NOT a requirement for a manhole opening of below-grade rainwater storage tanks?
+The opening must be at least 4 inches above the surrounding grade.
+The surrounding grade must be sloped away from the manhole.
+The opening must be at least 6 inches above the surrounding grade. *
+The opening must be at least 20 inches in diameter.
+none of the answers provided
+
+77. Underground tanks shall be ballasted, anchored, or otherwise secured to prevent them from _______ when empty.
+floating out of the ground*
+cracking
+becoming airborne
+losing water tightness
+rusting or otherwise corroding
+
+78. Rainwater storage tanks shall be provided with a means of _______.
+pumping for inspection and cleaning
+relocating without disassembly
+shutting off the overflow drain
+draining and cleaning*
+climbing to the top for debris removal
+
+79. Rainwater storage tank overflow drains _______ shutoff valve.
+must be equipped with a
+are permitted to have a
+shall not be equipped with a*
+may only be installed with an AHJ-approved
+are recommended to have a
+
+80. Where discharging to the storm drainage system, the overflow drain of a rainwater storage tank must be protected from backflow of the storm drainage system by _______ or other approved method.
+a fullway valve
+a curb cock
+a cleanout
+a backwater valve*
+an isolation valve
+
+81. The overflow outlet of a rainwater storage tank shall be sized to accommodate the flow of the rainwater entering the tank, and shall be not less than _______ of the inflow pipes.  
+the smallest diameter
+the aggregate cross-sectional area*
+twice the diameter of the largest 
+the sum of the lengths
+the square root of the area of the largest
+
+82. Rainwater tank openings shall be protected to prevent the entrance of _______ into the tank.
+unauthorized personnel
+the general public
+insects, birds, or rodents*
+children
+lizards, turtles or larvae
+
+83. Rainwater tank access openings exceeding 12 inches in diameter shall be _______ to prevent unintended entry. 
+made of hardened plastic
+sealed
+hinged
+leak-proof
+secured*
+
+84. Rainwater tanks shall be permanently marked with _______ and the language:  “NONPOTABLE RAINWATER.”
+the tank dimensions
+the tank capacity*
+a well-lit sign
+the cleaning frequency schedule
+a safety perimeter
+
+85. Where openings are provided to allow a person to enter the tank, the opening shall be marked with the following language: “_______.”
+DANGER - CONFINED SPACE*
+ENTER AT YOUR OWN RISK
+STOP IN THE NAME OF THE LAW
+MUST BE CERTIFIED TO ENTER
+DO NOT ENTER WHEN RAINING
+
+86. Where rainwater tank venting by means of drainage or overflow piping is not provided or _______, a vent shall be installed on each tank.
+is forbidden by the AHJ
+would be aesthetically undesirable
+is considered insufficient*
+cannot be easily accessed
+is not well marked
+
+Quiz 6
+87. Pumps serving rainwater catchment systems must be _______.
+rated as “heavy duty”
+suitable for hazardous conditions
+listed*
+sheltered from inclement weather
+installed above grade
+
+88. Pumps supplying water to water closets, urinals, and trap primers shall be capable of delivering not less than _______ residual pressure at the highest and most remote outlet served.
+10 psi
+20 psi
+15 psi*
+30 psi
+40 psi
+
+89. Where the water pressure in the rainwater supply system within a building exceeds 80 psi, a _______ shall be installed.
+pressure-relief valve
+pressure-reducing valve*
+backwater valve
+check valve
+needle valve
+
+90. Devices and equipment used to treat rainwater to maintain minimum water quality requirements determined by the AHJ shall be _______ and approved for the intended application.
+easy to clean
+listed or labeled*
+standardized
+laboratory tested
+inspected every 3 months
+
+91. Tanks and piping installed in locations subject to freezing must be provided with an approved _______.
+drainage system
+method of freeze protection*
+shelter
+safety guard
+electric warmer
+
+92. Devices used to remove debris or sediment from a rainwater catchment conveyance system must be _______.
+approved by the local health authority
+capable of removing particles as small as 25 microns
+equipped with an automatic cleaning system
+sized in accordance with Table 601.1
+accessible*
+
+93. A filter permitting the passage of particulates not larger than _______ microns shall be provided for rainwater supplied to water closets, urinals, trap primers, and drip irrigation systems.
+100*
+1500
+200
+1000
+50
+
+94. Institutional restrooms that use water from nonpotable rainwater catchment systems must have signs posted in locations _______.
+above each affected fixture
+no further apart than 10 feet
+at eye level
+approved by the AHJ*
+both inside and outside the restrooms
+
+95. Equipment rooms containing nonpotable rainwater equipment must have signs to that effect posted in locations that are _______.
+readily accessible
+visible to anyone working on or near rainwater equipment*
+visible from the door of the equipment room
+within 5 feet of the rainwater equipment
+none of the answers provided
+
+96. Rainwater catchment system inspections require that storage tanks be filled with water to the overflow opening for a period of _______ and during the inspection unless otherwise specified by the AHJ.
+one week
+72 hours
+24 hours*
+48 hours
+2 hours
+
+97. Rainwater catchment system inspections require that seams and joints _______.
+be resealed
+are permanently welded or glued closed
+are located above the overflow opening
+are checked for water tightness*
+can be verified airtight
+
+98. During the required annual cross-connection inspection, the potable and rainwater catchment water systems must be _______ and independently inspected and tested.
+leak-proofed
+isolated from each other *
+cleaned
+refurbished
+turned off at their respective meters 24 hours ahead of time
+
+99. Prior to commencing the annual cross-connection testing, which of the following is not part of the pre-inspection?
+pumps
+equipment room signs
+exposed piping
+equipment
+none of the answers provided*
+
+100. The first step of the procedure for determining cross-connection has the potable water system _______ while the rainwater catchment system is shut down and drained.
+shut off at the meter
+drained and pressurized
+activated and pressurized*
+shut down and depressurized
+chlorinated
+
+101. At the end of the annual cross-connection test, if there is no flow detected in the fixtures which would indicate a cross-connection, the potable water system _______.
+must be re-inspected
+shall be repressurized*
+must be chlorinated
+can be used again after 24 hours
+can be reconnected to the nonpotable system
+
+102. In the event that a cross-connection is discovered during the annual inspection, it must be uncovered and disconnected and  _______.
+the systems must be retested*
+the AHJ must declare the test successful and complete
+it is possible to return both systems to use immediately
+the nonpotable system is put on probation for 30 days
+it is necessary for the property owner to obtain a new permit 
+Quiz 7
+103. During the annual inspection, once a cross-connection is disconnected and the systems retested with no cross-connection found, it is necessary to treat the potable water system with 50 ppm chlorine for _______. 
+30 days
+24 hours*
+72 hours
+one week
+48 hours
+
+104. In the State of Washington, after chlorination, the potable water system shall be flushed and a standard bacteriological test for drinking water shall be performed by _______ in Washington State. 
+the Health Department
+the Authority Having Jurisdiction  
+a laboratory certified for drinking water*
+the Department of Sanitation 
+an independent contractor
+
+105. The frequency of the inspection of a rainwater catchment system can be determined by the AHJ depending on site conditions, but in no event shall the test occur less than once in _______.
+5 years
+3 years
+4 years*
+2 years
+6 months

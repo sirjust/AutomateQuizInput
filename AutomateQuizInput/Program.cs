@@ -14,7 +14,7 @@ namespace AutomateQuizInput
             Console.WriteLine("This program will automatically input quizzes into the AnytimeCE Admin UI.");
             Console.WriteLine("What is the CourseID?");
             string courseId = Console.ReadLine();
-            string path = @"../../Docs/Quizzes.txt";
+            string path = @"../../Docs/Quiz2.txt";
             var allLines = Helper.ReadDocument(path);
             var separatedQuizzes = Helper.SeparateQuizzes(allLines);
             List<Quiz> completeQuizzes = new List<Quiz>();
