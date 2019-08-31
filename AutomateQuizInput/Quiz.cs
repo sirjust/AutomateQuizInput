@@ -13,7 +13,6 @@ namespace AutomateQuizInput
 {
     public class Quiz
     {
-
         public string CourseId { get; set; }
         public int QuizId { get; set; }
         public string Status { get; set; }
@@ -25,11 +24,7 @@ namespace AutomateQuizInput
         public string Comment { get; set; }
         public List<Question> Questions { get; set; }
 
-
-        public Quiz()
-        {
-
-        }
+        public Quiz() {}
         public Quiz(IEnumerable<string> quizData, string courseId)
         {
             List<string> quizDataList = quizData.ToList(); 

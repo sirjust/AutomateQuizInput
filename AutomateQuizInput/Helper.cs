@@ -56,7 +56,15 @@ namespace AutomateQuizInput
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
+            UploadQuizzes(quizzes, driver);
+            
+            return driver;
+        }
+
+        private static void UploadQuizzes(List<Quiz> quizzes, IWebDriver driver)
+        {
             //Loop through all the quiz fields on by one
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             foreach (Quiz quiz in quizzes)
             {
                 driver.FindElement(By.Name("course_id")).Click();
@@ -64,7 +72,7 @@ namespace AutomateQuizInput
                 {
                     new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
                 }
-                catch(NoSuchElementException ex)
+                catch (NoSuchElementException ex)
                 {
                     Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
                     quiz.CourseId = Console.ReadLine();
@@ -84,39 +92,46 @@ namespace AutomateQuizInput
                 driver.FindElement(By.Name("button_action")).Click();
 
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
-                //foreach quiz question
-                for (int j = 0; j < quiz.Questions.Count; j++)
-                {
-                    int questionId = quiz.Questions[j].QuestionId;
-                    string questionText = quiz.Questions[j].QuestionText;
-                    // we add one to this value because the portal isn't zero-based
-                    int CorrectAnswerIndex = quiz.Questions[j].CorrectAnswerIndex + 1;
-                    string questStatus = quiz.Questions[j].QuestionStatus;
-                    string qType = quiz.Questions[j].QuestionType;
-                    IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
-                    qstatus.SendKeys(questStatus);
-                    IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
-                    qtype.Clear();
-                    qtype.SendKeys(qType = "M");
-                    IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
-                    qtext.Clear();
-                    qtext.SendKeys(questionText);
-                    for (int i = 0; i < quiz.Questions[j].Answers.Count(); i++)
-                    {
-                        IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
-                        answerText.SendKeys(quiz.Questions[j].Answers[i]);
-                    }
-                    IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
-                    qCorrect.SendKeys(CorrectAnswerIndex.ToString());
-                    driver.FindElement(By.Name("button_action")).Click();
-                    if (j < quiz.Questions.Count - 1)
-                    {
-                        driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
-                    }
-                }
+
+                UploadQuestions(quiz.Questions, driver);
+                
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[1]")).Click();
             }
-            return driver;
+        }
+
+        private static void UploadQuestions(List<Question> questions, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //foreach quiz question
+            for (int j = 0; j < questions.Count; j++)
+            {
+                int questionId = questions[j].QuestionId;
+                string questionText = questions[j].QuestionText;
+                // we add one to this value because the portal isn't zero-based
+                int CorrectAnswerIndex = questions[j].CorrectAnswerIndex + 1;
+                string questStatus = questions[j].QuestionStatus;
+                string qType = questions[j].QuestionType;
+                IWebElement qstatus = wait.Until(d => d.FindElement(By.Name("q_status")));
+                qstatus.SendKeys(questStatus);
+                IWebElement qtype = wait.Until(d => d.FindElement(By.Name("q_type")));
+                qtype.Clear();
+                qtype.SendKeys(qType = "M");
+                IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
+                qtext.Clear();
+                qtext.SendKeys(questionText);
+                for (int i = 0; i < questions[j].Answers.Count(); i++)
+                {
+                    IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
+                    answerText.SendKeys(questions[j].Answers[i]);
+                }
+                IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
+                qCorrect.SendKeys(CorrectAnswerIndex.ToString());
+                driver.FindElement(By.Name("button_action")).Click();
+                if (j < questions.Count - 1)
+                {
+                    driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Success:'])[1]/following::input[2]")).Click();
+                }
+            }
         }
 
         public static List<Question> GenerateQuestions(List<string> quizDataList)

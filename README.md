@@ -4,6 +4,10 @@ It requires two perfectly formatted documents: Quizzes.txt and PageInfo.txt
 NOTE: Github has messed with the formatting of this document, so please open it in a text editor for the correct formatting
 An example of the formatting of Quizzes.txt is as follows:
 
+**IMPORTANT**
+DO NOT READ THIS IN GITHUB! GITHUB REFORMATS THIS DOCUMENT WITH MARKDOWN THAT WILL BREAK THE PROGRAM IF FOLLOWED
+**IMPORTANT**
+
 Quiz 1
 1) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.
 42
