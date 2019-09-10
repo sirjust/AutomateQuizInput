@@ -44,7 +44,6 @@ namespace AutomateQuizInput
             return initialSeparatedList;
         }
 
-
         public static IWebDriver UploadTask(List<Quiz> quizzes)
         {
             IWebDriver driver;
@@ -60,7 +59,23 @@ namespace AutomateQuizInput
             
             return driver;
         }
-
+        private static void TryToGetCourseId(IWebDriver driver, Quiz quiz)
+        {
+            int attempts = 3;
+            try
+            {
+                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
+                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+            }
+            catch (NoSuchElementException ex)
+            {
+                attempts--;
+                if (attempts < 0) { throw ex; }
+                Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
+                quiz.CourseId = Console.ReadLine();
+                TryToGetCourseId(driver, quiz);
+            }
+        }
         private static void UploadQuizzes(List<Quiz> quizzes, IWebDriver driver)
         {
             //Loop through all the quiz fields on by one
@@ -68,17 +83,7 @@ namespace AutomateQuizInput
             foreach (Quiz quiz in quizzes)
             {
                 driver.FindElement(By.Name("course_id")).Click();
-                try
-                {
-                    new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
-                }
-                catch (NoSuchElementException ex)
-                {
-                    Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
-                    quiz.CourseId = Console.ReadLine();
-                }
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::option[15]")).Click();
-                driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
+                TryToGetCourseId(driver, quiz);
 
                 IWebElement course_page = wait.Until(d => d.FindElement(By.Name("course_page")));
                 course_page.SendKeys(quiz.CoursePage.ToString());
@@ -189,6 +194,16 @@ namespace AutomateQuizInput
                 }
             }
             return questions;
+        }
+
+        public static bool CheckForInvalidCharacters(string path)
+        {
+            string text = File.ReadAllText(path);
+            if (text.Contains("'"))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

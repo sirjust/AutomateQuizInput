@@ -15,6 +15,15 @@ namespace AutomateQuizInput
             Console.WriteLine("What is the Course Id?\n ***IMPORTANT*** This must match an available course in the portal.");
             string courseId = Console.ReadLine();
             string path = @"../../Docs/Quizzes.txt";
+
+            Console.WriteLine("We will now check the document for invalid characters, such as the single quote.");
+            if (!Helper.CheckForInvalidCharacters(path))
+            {
+                Console.WriteLine("There are invalid characters in the quizzes document. Please edit it and try again.");
+                Console.ReadLine();
+                return;
+            }
+
             var allLines = Helper.ReadDocument(path);
             var separatedQuizzes = Helper.SeparateQuizzes(allLines);
             List<Quiz> completeQuizzes = new List<Quiz>();
