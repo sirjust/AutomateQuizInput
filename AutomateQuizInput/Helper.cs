@@ -59,12 +59,11 @@ namespace AutomateQuizInput
             
             return driver;
         }
-        private static void TryToGetCourseId(IWebDriver driver, Quiz quiz)
+        private static void TryToGetCourseId(IWebDriver driver, Quiz quiz, int attempts = 3)
         {
-            int attempts = 3;
             try
             {
-                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(quiz.CourseId);
+                new SelectElement(driver.FindElement(By.Name("course_id"))).SelectByText(Quiz.CourseId);
                 driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Choose a Course ID'])[1]/following::input[1]")).Click();
             }
             catch (NoSuchElementException ex)
@@ -72,8 +71,8 @@ namespace AutomateQuizInput
                 attempts--;
                 if (attempts < 0) { throw ex; }
                 Console.WriteLine("The Course ID was not found. Please input the title of a course that is on the server.");
-                quiz.CourseId = Console.ReadLine();
-                TryToGetCourseId(driver, quiz);
+                Quiz.CourseId = Console.ReadLine();
+                TryToGetCourseId(driver, quiz, attempts);
             }
         }
         private static void UploadQuizzes(List<Quiz> quizzes, IWebDriver driver)

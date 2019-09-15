@@ -13,7 +13,7 @@ namespace AutomateQuizInput
 {
     public class Quiz
     {
-        public string CourseId { get; set; }
+        public static string CourseId { get; set; }
         public int QuizId { get; set; }
         public string Status { get; set; }
         public int CoursePage { get; set; }
