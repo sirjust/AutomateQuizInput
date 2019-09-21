@@ -56,6 +56,7 @@ namespace AutomateQuizInput
 
         public string InputQuizTask(Quiz quiz)
         {
+            // dummy method
             return $"Working on quiz {quiz.QuizId}";
         }
     }

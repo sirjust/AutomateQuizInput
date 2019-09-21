@@ -52,6 +52,7 @@
     <Compile Include="HelperTests.cs" />
     <Compile Include="PageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionTests.cs" />
     <Compile Include="QuizTests.cs" />
     <Compile Include="TestAuxiliaryMethods.cs" />
   </ItemGroup>

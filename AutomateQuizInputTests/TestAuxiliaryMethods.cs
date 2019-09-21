@@ -35,5 +35,10 @@ namespace AutomateQuizInputTests
             pages.Add(new PageContainer { QuizPageNumber = 100, SuccessPageNumber = 101, FailPageNumber = 51 });
             return pages;
         }
+
+        public static Question GetMockQuestion()
+        {
+            return new Question { QuestionText = "9) This is a test question." };
+        }
     }
 }

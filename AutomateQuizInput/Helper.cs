@@ -122,7 +122,7 @@ namespace AutomateQuizInput
                 qtype.SendKeys(qType = "M");
                 IWebElement qtext = wait.Until(d => d.FindElement(By.Name("q_text")));
                 qtext.Clear();
-                qtext.SendKeys(questionText);
+                qtext.SendKeys(questions[j].RemoveNumberFromQuestionText(questionText));
                 for (int i = 0; i < questions[j].Answers.Count(); i++)
                 {
                     IWebElement answerText = wait.Until(d => d.FindElement(By.Name($"q_a{i + 1}")));
@@ -153,6 +153,14 @@ namespace AutomateQuizInput
                 if (quizDataList[i] == "")
                 {
                     Question question = new Question(questionId, questionText, answers.ToList(), CorrectAnswerIndex);
+                    // Check if there are more than five answers and remove the last if so
+                    if (question.HasMoreThanFiveAnswers(question.Answers))
+                    {
+                        Console.WriteLine($"The question with the following text: ---{question.QuestionText}--- has more than 5 answers. Please exit the program and modify the quiz document.");
+                        Console.ReadLine();
+                        Environment.Exit(0);
+                    }
+
                     // add a copy of the question to the quiz
                     questions.Add(question);
                     // remove values from the variable
@@ -195,14 +203,54 @@ namespace AutomateQuizInput
             return questions;
         }
 
-        public static bool CheckForInvalidCharacters(string path)
+        public static bool TextHasApostrophes(string text)
         {
-            string text = File.ReadAllText(path);
-            if (text.Contains("'"))
+                if (text.Contains("'"))
+                {
+                    return true;
+                }
+            return false;
+        }
+
+        public static string ChangeApostrophesToTicks(string text)
+        {
+            var newText = text.Replace("'", "`");
+            return newText;
+        }
+
+        public static bool TextHasDashes(string text)
+        {
+            if (text.Contains("-"))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
+        }
+
+        public static string ChangeDashesToUnderscores(string text)
+        {
+            var newText = text.Replace("-", "_");
+            return newText;
+        }
+
+        public static IEnumerable<string> FindAndReplaceInvalidCharacters(IEnumerable<string> lines)
+        {
+            var lineList = lines.ToList();
+            for(int i = 0; i < lines.Count(); i++) 
+            {
+                if (TextHasApostrophes(lineList[i]))
+                {
+                    Console.WriteLine("The text has an apostrophe. Updating...");
+                    lineList[i] = ChangeApostrophesToTicks(lineList[i]);
+                }
+
+                if (TextHasDashes(lineList[i]))
+                {
+                    Console.WriteLine("The text has a dash. Updating...");
+                    lineList[i] = ChangeDashesToUnderscores(lineList[i]);
+                }
+            }
+            return lineList;
         }
     }
 }

@@ -17,14 +17,10 @@ namespace AutomateQuizInput
             string path = @"../../Docs/Quizzes.txt";
 
             Console.WriteLine("We will now check the document for invalid characters, such as the single quote.");
-            if (!Helper.CheckForInvalidCharacters(path))
-            {
-                Console.WriteLine("There are invalid characters in the quizzes document. Please edit it and try again.");
-                Console.ReadLine();
-                return;
-            }
 
             var allLines = Helper.ReadDocument(path);
+            allLines = Helper.FindAndReplaceInvalidCharacters(allLines);
+
             var separatedQuizzes = Helper.SeparateQuizzes(allLines);
             List<Quiz> completeQuizzes = new List<Quiz>();
             foreach(var quizData in separatedQuizzes)

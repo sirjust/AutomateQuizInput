@@ -75,6 +75,62 @@ namespace AutomateQuizInputTests
             // assert
             Assert.AreEqual(expected, answers.Count);
         }
+
+        [TestMethod]
+        public void TextHasApostrophes_ShouldReturnTrue_WhenApostrophesPresent()
+        {
+            // Arrange
+            string text = "I'm a test.";
+            var expected = true;
+
+            // Act
+            var actual = Helper.TextHasApostrophes(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ChangeApostropheToTick_ShouldChangeAllApostrophes()
+        {
+            // Arrange
+            string text = "I'm a test and I'm glad to be here.";
+            var expected = "I`m a test and I`m glad to be here.";
+
+            // Act
+            var actual = Helper.ChangeApostrophesToTicks(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TextHasDashes_ShouldReturnTrue_WhenDashesPresent()
+        {
+            // Arrange
+            string text = "I'm a test - I'm glad to be here.";
+            var expected = true;
+
+            // Act
+            var actual = Helper.TextHasApostrophes(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ChangeDashesToUnderscores_ShouldChangeAllApostrophes()
+        {
+            // Arrange
+            string text = "I'm a test - I'm glad to be here.";
+            var expected = "I'm a test _ I'm glad to be here.";
+
+            // Act
+            var actual = Helper.ChangeDashesToUnderscores(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 
