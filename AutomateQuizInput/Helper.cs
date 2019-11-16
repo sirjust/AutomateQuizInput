@@ -14,11 +14,7 @@ namespace AutomateQuizInput
 {
     public static class Helper
     {
-        public static IEnumerable<string> ReadDocument(string path)
-        {
-            var allLines = File.ReadAllLines(path);
-            return allLines;
-        }
+        public static IEnumerable<string> ReadDocument(string path) => (File.ReadAllLines(path));
 
         public static IEnumerable<IEnumerable<string>> SeparateQuizzes(IEnumerable<string> rawLines)
         {
@@ -130,6 +126,7 @@ namespace AutomateQuizInput
                 }
                 IWebElement qCorrect = wait.Until(d => d.FindElement(By.Name("q_correct")));
                 qCorrect.SendKeys(CorrectAnswerIndex.ToString());
+                Thread.Sleep(2000);
                 driver.FindElement(By.Name("button_action")).Click();
                 if (j < questions.Count - 1)
                 {
@@ -217,7 +214,20 @@ namespace AutomateQuizInput
             var newText = text.Replace("'", "`");
             return newText;
         }
+        public static bool TextHasCurlyQuotes(string text)
+        {
+            if (text.Contains("“") || text.Contains("”"))
+            {
+                return true;
+            }
+            return false;
+        }
 
+        public static string StraightenCurlyQuotes(string text)
+        {
+            var newText = text.Replace("“", "\"").Replace("”", "\"");
+            return newText;
+        }
         public static bool TextHasDashes(string text)
         {
             if (text.Contains("-"))
@@ -231,6 +241,28 @@ namespace AutomateQuizInput
         {
             var newText = text.Replace("-", "_");
             return newText;
+        }
+
+        public static string CleanOutSmartQuotes(string text)
+        {
+            if(text.Contains('\u2018') || text.Contains('\u2019') || text.Contains('\u201c') || text.Contains('\u201d'))
+            {
+                Console.WriteLine("Text has smart quote");
+                return text.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"');
+            }
+            return text;
+        } 
+
+        public static string CleanOutFractionSymbols(string text)
+        {
+            var quarter = "1/4";
+            var half = "1/2";
+            var threeQuarters = "3/4";
+            StringBuilder builder = new StringBuilder(text);
+
+            builder.Replace("¼", quarter).Replace("½", half).Replace("¾", threeQuarters);
+            text = builder.ToString();
+            return text;
         }
 
         public static IEnumerable<string> FindAndReplaceInvalidCharacters(IEnumerable<string> lines)
@@ -248,6 +280,12 @@ namespace AutomateQuizInput
                 {
                     Console.WriteLine("The text has a dash. Updating...");
                     lineList[i] = ChangeDashesToUnderscores(lineList[i]);
+                }
+
+                if (TextHasCurlyQuotes(lineList[i]))
+                {
+                    Console.WriteLine("The text has curly quotation marks. Updating...");
+                    lineList[i] = StraightenCurlyQuotes(lineList[i]);
                 }
             }
             return lineList;

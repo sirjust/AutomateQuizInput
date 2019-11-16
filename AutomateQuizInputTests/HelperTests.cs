@@ -131,6 +131,48 @@ namespace AutomateQuizInputTests
             // Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void CleanOutSmartQuotes_ShouldChangeCurlySingleQuotesToStraight()
+        {
+            // Arrange
+            string text = "the County Clerk’s office";
+            var expected = "the County Clerk's office";
+
+            // Act
+            var actual = Helper.CleanOutSmartQuotes(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CleanOutSmartQuotes_ShouldChangeCurlyDoubleQuotesToStraight()
+        {
+            // Arrange
+            string text = "“CAUTION: DRINK ONLY WHEN RAINING.”";
+            var expected = "\"CAUTION: DRINK ONLY WHEN RAINING.\"";
+            
+            // Act
+            var actual = Helper.CleanOutSmartQuotes(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CleanOutFractionSymbols_ShouldReplaceSymbols()
+        {
+            // Arrange
+            string text = "½ inch ¾ inch 1 inch ¼ inch";
+            var expected = "1/2 inch 3/4 inch 1 inch 1/4 inch";
+
+            // Act
+            var actual = Helper.CleanOutFractionSymbols(text);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 

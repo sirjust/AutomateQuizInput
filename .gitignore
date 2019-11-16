@@ -2,6 +2,7 @@
 Debug/
 Logs/
 bin/*
+Docs/
 
 LoginInfo.cs
 *.suo

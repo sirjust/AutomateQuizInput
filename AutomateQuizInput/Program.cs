@@ -19,9 +19,14 @@ namespace AutomateQuizInput
             Console.WriteLine("We will now check the document for invalid characters, such as the single quote.");
 
             var allLines = Helper.ReadDocument(path);
-            allLines = Helper.FindAndReplaceInvalidCharacters(allLines);
+            var allLinesList = Helper.FindAndReplaceInvalidCharacters(allLines).ToList();
 
-            var separatedQuizzes = Helper.SeparateQuizzes(allLines);
+            for (int i = 0; i < allLinesList.Count(); i++)
+            {
+                allLinesList[i] = Helper.CleanOutSmartQuotes(allLinesList[i]);
+            }
+
+            var separatedQuizzes = Helper.SeparateQuizzes(allLinesList);
             List<Quiz> completeQuizzes = new List<Quiz>();
             foreach(var quizData in separatedQuizzes)
             {
