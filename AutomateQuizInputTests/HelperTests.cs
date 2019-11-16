@@ -10,6 +10,10 @@ namespace AutomateQuizInputTests
     [TestClass]
     public class HelperTests
     {
+        IQuizBuilder _builder = new QuizBuilder();
+        IReader _reader = new Reader();
+        ITextChecker _checker = new TextChecker();
+
         [TestMethod]
         public void SeparateQuizzes_ShouldReturnListofListOfString()
         {
@@ -17,7 +21,7 @@ namespace AutomateQuizInputTests
             IEnumerable<string> testObject = new List<string>();
 
             // act
-            IEnumerable<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject);
+            IEnumerable<IEnumerable<string>> result = _builder.SeparateQuizzes(testObject);
             string resultType = result.GetType().ToString();
             // assert
             Assert.AreEqual(resultType, "System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]");
@@ -31,7 +35,7 @@ namespace AutomateQuizInputTests
             int expected = 2;
 
             // act
-            List<IEnumerable<string>> result = Helper.SeparateQuizzes(testObject).ToList();
+            List<IEnumerable<string>> result = _builder.SeparateQuizzes(testObject).ToList();
             // assert
             Assert.AreEqual(expected, result.Count);
         }
@@ -42,7 +46,7 @@ namespace AutomateQuizInputTests
             // arrange
             string expected = "World!";
             // act
-            var result = Helper.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\Test\TextFile.txt").ToList();
+            var result = _reader.ReadDocument(@"..\..\..\AutomateQuizInput\Docs\Test\TextFile.txt").ToList();
             // assert
             Assert.AreEqual(expected, result[1]);
         }
@@ -84,7 +88,7 @@ namespace AutomateQuizInputTests
             var expected = true;
 
             // Act
-            var actual = Helper.TextHasApostrophes(text);
+            var actual = _checker.TextHasApostrophes(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -98,7 +102,7 @@ namespace AutomateQuizInputTests
             var expected = "I`m a test and I`m glad to be here.";
 
             // Act
-            var actual = Helper.ChangeApostrophesToTicks(text);
+            var actual = _checker.ChangeApostrophesToTicks(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -112,7 +116,7 @@ namespace AutomateQuizInputTests
             var expected = true;
 
             // Act
-            var actual = Helper.TextHasApostrophes(text);
+            var actual = _checker.TextHasApostrophes(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -126,7 +130,7 @@ namespace AutomateQuizInputTests
             var expected = "I'm a test _ I'm glad to be here.";
 
             // Act
-            var actual = Helper.ChangeDashesToUnderscores(text);
+            var actual = _checker.ChangeDashesToUnderscores(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -140,7 +144,7 @@ namespace AutomateQuizInputTests
             var expected = "the County Clerk's office";
 
             // Act
-            var actual = Helper.CleanOutSmartQuotes(text);
+            var actual = _checker.CleanOutSmartQuotes(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -154,7 +158,7 @@ namespace AutomateQuizInputTests
             var expected = "\"CAUTION: DRINK ONLY WHEN RAINING.\"";
             
             // Act
-            var actual = Helper.CleanOutSmartQuotes(text);
+            var actual = _checker.CleanOutSmartQuotes(text);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -168,7 +172,7 @@ namespace AutomateQuizInputTests
             var expected = "1/2 inch 3/4 inch 1 inch 1/4 inch";
 
             // Act
-            var actual = Helper.CleanOutFractionSymbols(text);
+            var actual = _checker.CleanOutFractionSymbols(text);
 
             // Assert
             Assert.AreEqual(expected, actual);

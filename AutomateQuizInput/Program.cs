@@ -18,15 +18,20 @@ namespace AutomateQuizInput
 
             Console.WriteLine("We will now check the document for invalid characters, such as the single quote.");
 
-            var allLines = Helper.ReadDocument(path);
-            var allLinesList = Helper.FindAndReplaceInvalidCharacters(allLines).ToList();
+            IReader reader = new Reader();
+            IQuizBuilder builder = new QuizBuilder();
+            ITextChecker checker = new TextChecker();
+            IUploader uploader = new Uploader();
+
+            var allLines = reader.ReadDocument(path);
+            var allLinesList = checker.FindAndReplaceInvalidCharacters(allLines).ToList();
 
             for (int i = 0; i < allLinesList.Count(); i++)
             {
-                allLinesList[i] = Helper.CleanOutSmartQuotes(allLinesList[i]);
+                allLinesList[i] = checker.CleanOutSmartQuotes(allLinesList[i]);
             }
 
-            var separatedQuizzes = Helper.SeparateQuizzes(allLinesList);
+            var separatedQuizzes = builder.SeparateQuizzes(allLinesList);
             List<Quiz> completeQuizzes = new List<Quiz>();
             foreach(var quizData in separatedQuizzes)
             {
@@ -36,15 +41,15 @@ namespace AutomateQuizInput
             }
 
             // add three page numbers to each quiz using the PageInfo document
-            PageContainer pageContainer = new PageContainer();
-            var pageDocLines = Helper.ReadDocument(@"../../Docs/PageInfo.txt");
+            PageContainer pageContainer = new PageContainer(builder);
+            var pageDocLines = reader.ReadDocument(@"../../Docs/PageInfo.txt");
             var pages = pageContainer.GetPages(pageDocLines, completeQuizzes.Count());
             pageContainer.InsertPages(completeQuizzes, pages.ToList());
 
             Console.WriteLine("The documents have been successfully read, and we are ready to input your quizzes.");
             // input data from the quizzes into the admin portal using the ui
 
-            Helper.UploadTask(completeQuizzes);
+            uploader.UploadTask(completeQuizzes);
             Console.WriteLine("The program has completed successfully. Please check your quizzes in the admin portal.");
             Console.ReadLine();
         }

@@ -31,8 +31,8 @@ namespace AutomateQuizInputTests
         public static List<PageContainer> GetMockPageContainers()
         {
             var pages = new List<PageContainer>();
-            pages.Add(new PageContainer { QuizPageNumber = 50, SuccessPageNumber = 51, FailPageNumber = 2 });
-            pages.Add(new PageContainer { QuizPageNumber = 100, SuccessPageNumber = 101, FailPageNumber = 51 });
+            pages.Add(new PageContainer(new QuizBuilder()) { QuizPageNumber = 50, SuccessPageNumber = 51, FailPageNumber = 2 });
+            pages.Add(new PageContainer(new QuizBuilder()) { QuizPageNumber = 100, SuccessPageNumber = 101, FailPageNumber = 51 });
             return pages;
         }
 

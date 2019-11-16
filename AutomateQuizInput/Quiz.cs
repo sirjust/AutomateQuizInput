@@ -13,6 +13,7 @@ namespace AutomateQuizInput
 {
     public class Quiz
     {
+        IQuizBuilder _builder = new QuizBuilder();
         public static string CourseId { get; set; }
         public int QuizId { get; set; }
         public string Status { get; set; }
@@ -24,7 +25,9 @@ namespace AutomateQuizInput
         public string Comment { get; set; }
         public List<Question> Questions { get; set; }
 
-        public Quiz() {}
+        public Quiz(IQuizBuilder builder) {
+            _builder = builder;
+        }
         public Quiz(IEnumerable<string> quizData, string courseId)
         {
             List<string> quizDataList = quizData.ToList(); 
@@ -51,7 +54,7 @@ namespace AutomateQuizInput
             PassFailPercent = default;
             ImagePath = default;
             Comment = default;
-            Questions = Helper.GenerateQuestions(quizDataList);
+            Questions = _builder.GenerateQuestions(quizDataList);
         }
 
         public string InputQuizTask(Quiz quiz)

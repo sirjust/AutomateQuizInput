@@ -9,6 +9,7 @@ namespace AutomateQuizInputTests
     [TestClass]
     public class PageTests
     {
+        IQuizBuilder _builder = new QuizBuilder();
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void GetPages_ShouldThrowException_WhenQuizzesAndPagesUnequal()
@@ -16,7 +17,7 @@ namespace AutomateQuizInputTests
             // arrange
             var quizzes = new List<Quiz>();
             var pages = TestAuxiliaryMethods.GetMockPageInputData();
-            PageContainer pageContainer = new PageContainer();
+            PageContainer pageContainer = new PageContainer(_builder);
 
             // act
             pageContainer.GetPages(pages, quizzes.Count);
@@ -40,7 +41,7 @@ namespace AutomateQuizInputTests
             pages.Add("world");
             pages.Add("51"); ;
 
-            PageContainer pageContainer = new PageContainer();
+            PageContainer pageContainer = new PageContainer(_builder);
 
             // act
             pageContainer.GetPages(pages, quizzes.Count);
@@ -63,7 +64,7 @@ namespace AutomateQuizInputTests
             pages.Add("100");
             pages.Add("50");
 
-            PageContainer pageContainer = new PageContainer();
+            PageContainer pageContainer = new PageContainer(_builder);
 
             // act
             pageContainer.GetPages(pages, quizzes.Count);
@@ -78,7 +79,7 @@ namespace AutomateQuizInputTests
             // arrange
             var quizzes = new List<Quiz>();
             var pages = TestAuxiliaryMethods.GetMockPageContainers();
-            PageContainer pageContainer = new PageContainer();
+            PageContainer pageContainer = new PageContainer(_builder);
 
             // act 
             pageContainer.InsertPages(quizzes, pages);
@@ -96,7 +97,7 @@ namespace AutomateQuizInputTests
                 TestAuxiliaryMethods.GetMockQuiz()
             };
             var pages = TestAuxiliaryMethods.GetMockPageContainers();
-            PageContainer pageContainer = new PageContainer();
+            PageContainer pageContainer = new PageContainer(_builder);
 
             // act 
             pageContainer.InsertPages(quizzes, pages);

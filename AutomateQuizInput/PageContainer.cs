@@ -4,25 +4,31 @@ using System.Linq;
 
 namespace AutomateQuizInput
 {
-    public class PageContainer
+    public class PageContainer : IPageContainer
     {
+        IQuizBuilder _builder;
         public int QuizNumber { get; set; } = default;
         public int QuizPageNumber { get; set; }
         public int SuccessPageNumber { get; set; }
         public int FailPageNumber { get; set; }
 
+        public PageContainer(IQuizBuilder builder)
+        {
+            _builder = builder;
+        }
+
         public IEnumerable<PageContainer> GetPages(IEnumerable<string> rawLines, int numberOfQuizzes)
         {
             var quizCount = rawLines.Count(x => x.Contains("Quiz"));
             List<PageContainer> pages = new List<PageContainer>();
-            if(numberOfQuizzes != quizCount)
+            if (numberOfQuizzes != quizCount)
             {
                 throw new ArgumentException("The number of quizzes in Quizzes.txt and PageInfo.txt is different.");
             }
-            List<IEnumerable<string>> separatedQuizzes = Helper.SeparateQuizzes(rawLines).ToList();
-            foreach(var list in separatedQuizzes)
+            List<IEnumerable<string>> separatedQuizzes = _builder.SeparateQuizzes(rawLines).ToList();
+            foreach (var list in separatedQuizzes)
             {
-                if(list.Count() < 4)
+                if (list.Count() < 4)
                 {
                     throw new ArgumentException($"This {list} doesn't have the correct number of pages. It needs a QuizPage, a SuccessPage, and a FailPage.");
                 }
@@ -38,7 +44,7 @@ namespace AutomateQuizInput
                 {
                     throw new ArgumentException("One of the page values is not an integer.");
                 }
-                var pageObject = new PageContainer
+                var pageObject = new PageContainer(_builder)
                 {
                     QuizPageNumber = pageNumber,
                     SuccessPageNumber = successPage,
@@ -51,12 +57,12 @@ namespace AutomateQuizInput
 
         public void InsertPages(List<Quiz> quizzes, IList<PageContainer> pageObjects)
         {
-            if(quizzes.Count != pageObjects.Count)
+            if (quizzes.Count != pageObjects.Count)
             {
                 throw new ArgumentException("The number of quizzes in Quizzes.txt and PageInfo.txt is different.");
             }
 
-            for (int i=0; i < quizzes.Count(); i++)
+            for (int i = 0; i < quizzes.Count(); i++)
             {
                 quizzes[i].CoursePage = pageObjects[i].QuizPageNumber;
                 quizzes[i].PassPage = pageObjects[i].SuccessPageNumber;
