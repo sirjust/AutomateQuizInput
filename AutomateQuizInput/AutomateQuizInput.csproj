@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings.cs" />
     <Compile Include="Interfaces\IQuizBuilder.cs" />
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Interfaces\ITextChecker.cs" />
