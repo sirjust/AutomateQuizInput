@@ -57,7 +57,7 @@ namespace AutomateQuizInput
             if (text.Contains('\u2018') || text.Contains('\u2019') || text.Contains('\u201c') || text.Contains('\u201d'))
             {
                 Console.WriteLine("Text has smart quote");
-                return text.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"');
+                return text.Replace('\u2018', '`').Replace('\u2019', '`').Replace('\u201c', '\"').Replace('\u201d', '\"');
             }
             return text;
         }
@@ -95,7 +95,9 @@ namespace AutomateQuizInput
                 {
                     Console.WriteLine("The text has curly quotation marks. Updating...");
                     lineList[i] = StraightenCurlyQuotes(lineList[i]);
+                    lineList[i] = CleanOutSmartQuotes(lineList[i]);
                 }
+                lineList[i] = CleanOutFractionSymbols(lineList[i]);
             }
             return lineList;
         }
