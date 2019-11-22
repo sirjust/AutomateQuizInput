@@ -56,11 +56,5 @@ namespace AutomateQuizInput
             Comment = default;
             Questions = _builder.GenerateQuestions(quizDataList);
         }
-
-        public string InputQuizTask(Quiz quiz)
-        {
-            // dummy method
-            return $"Working on quiz {quiz.QuizId}";
-        }
     }
 }
