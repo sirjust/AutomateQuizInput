@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace AutomateQuizInput
 {
@@ -72,20 +70,11 @@ namespace AutomateQuizInput
                     CorrectAnswerIndex = answers.Count - 1;
                 }
 
-                // Check if there is a number and a close parentheses
-                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1}\)+)"))
+                // Check if there is a number and a close parentheses at the start, if so, that line is the question line
+                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{1,2}\)+)"))
                 {
-                    // check if there is one number at the start
-                    questionId = Convert.ToInt32(char.GetNumericValue(quizDataList[i].First()));
-                    // If so, that line is the question line
-                    questionText = quizDataList[i];
-                }
-
-                else if (Regex.IsMatch(quizDataList[i], @"(^[0-9]{2}\)+)"))
-                {
-                    // check if there are two numbers at the start
-                    questionId = Convert.ToInt32(quizDataList[i].Substring(0, 2));
-                    // If so, that line is the question line
+                    questionId = Convert.ToInt32(quizDataList[i].Substring(0, quizDataList[i].IndexOf(')')));
+                    // 
                     questionText = quizDataList[i];
                 }
 

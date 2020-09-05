@@ -2,55 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomateQuizInput
 {
     public class TextChecker : ITextChecker
     {
 
-        public bool TextHasApostrophes(string text)
-        {
-            if (text.Contains("'"))
-            {
-                return true;
-            }
-            return false;
-        }
+        public bool TextHasApostrophes(string text) => text.Contains("'");
 
-        public string ChangeApostrophesToTicks(string text)
-        {
-            var newText = text.Replace("'", "`");
-            return newText;
-        }
-        public bool TextHasCurlyQuotes(string text)
-        {
-            if (text.Contains("“") || text.Contains("”"))
-            {
-                return true;
-            }
-            return false;
-        }
+        public string ChangeApostrophesToTicks(string text) => text.Replace("'", "`");
+        public bool TextHasCurlyQuotes(string text) => (text.Contains("“") || text.Contains("”"));
 
-        public string StraightenCurlyQuotes(string text)
-        {
-            var newText = text.Replace("“", "\"").Replace("”", "\"");
-            return newText;
-        }
-        public bool TextHasDashes(string text)
-        {
-            if (text.Contains("-"))
-            {
-                return true;
-            }
-            return false;
-        }
+        public string StraightenCurlyQuotes(string text) => text.Replace("“", "\"").Replace("”", "\"");
 
-        public string ChangeDashesToUnderscores(string text)
-        {
-            var newText = text.Replace("-", "_");
-            return newText;
-        }
+        public bool TextHasDashes(string text) => text.Contains("-");
+
+        public string ChangeDashesToUnderscores(string text) => text.Replace("-", "_");
 
         public string CleanOutSmartQuotes(string text)
         {

@@ -1,8 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AutomateQuizInput;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
-using AutomateQuizInput;
-using System;
 
 
 namespace AutomateQuizInputTests
@@ -65,7 +64,36 @@ namespace AutomateQuizInputTests
             Assert.AreEqual(expected, answers.Count);
         }
 
-        
+        [TestMethod]
+        public void GenerateQuestions_ShouldHaveQuestionNumberForSingleDigitQuestions()
+        {
+            // arrange
+            var quiz = TestAuxiliaryMethods.GetMockQuiz();
+
+            // act
+
+
+            // assert
+            foreach(var question in quiz.Questions)
+            {
+                Assert.IsTrue(question.QuestionId < 10);
+            }
+        }
+
+        [TestMethod]
+        public void GenerateQuestions_ShouldHaveQuestionNumberForDoubleDigitQuestions()
+        {
+            // arrange
+            var quiz = new Quiz(new List<string> { "Quiz 10", "11) Size the water heater for a house with 3 Bathrooms and 4 Bedrooms.", "67", "80*", "", "12) Question 2", "1", "2*", "" }, "1");
+            // act
+
+
+            // assert
+            foreach (var question in quiz.Questions)
+            {
+                Assert.IsTrue(question.QuestionId > 10);
+            }
+        }
     }
 }
 

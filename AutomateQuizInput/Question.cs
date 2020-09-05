@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace AutomateQuizInput
 {
     public class Question
     {
-        static readonly int _maxAnswers = 5;
         public int QuestionId { get; set; }
         public string QuestionText { get; set; }
         public List<string> Answers { get; set; }
@@ -37,6 +33,6 @@ namespace AutomateQuizInput
             return questionText;
         }
 
-        public bool HasMoreThanFiveAnswers(List<string> answers) => answers.Count() > 5 ? true : false;
+        public bool HasMoreThanFiveAnswers(List<string> answers) => answers.Count() > 5;
     }
 }
