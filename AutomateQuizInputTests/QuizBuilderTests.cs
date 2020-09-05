@@ -94,6 +94,19 @@ namespace AutomateQuizInputTests
                 Assert.IsTrue(question.QuestionId > 10);
             }
         }
+
+        [TestMethod]
+        public void GenerateQuestions_ShouldNotifyCorrectlyWhenMoreThanFiveAnswers()
+        {
+            // arrange
+            QuizBuilder builder = new QuizBuilder();
+            Question question = new Question(1, "question", new List<string> { "1", "2", "3", "4", "5", "6" }, 1);
+            var expected = "The question with the following text";
+            // act
+            var actual = builder.NotifyIfFiveOrMoreAnswers(question.Answers);
+
+            // assert
+            Assert.IsTrue(actual.Contains(expected));
+        }
     }
 }
-

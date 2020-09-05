@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject;
 
 namespace AutomateQuizInput
 {
@@ -22,7 +20,7 @@ namespace AutomateQuizInput
             var pageContainer = kernel.Get<IPageContainer>();
 
             // the text document needs to be in the Docs folder and in the right format
-            Console.WriteLine("This program will automatically input quizzes into the AnytimeCE Admin UI.\nFirst we will go through the provided text documents.");
+            DocumentationWriter.WriteDocumentationForUser();
             Console.WriteLine("What is the Course Id?\n ***IMPORTANT*** This must match an available course in the portal.");
             string courseId = Console.ReadLine();
             string path = @"../../Docs/Quizzes.txt";

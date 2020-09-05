@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AutomateQuizInput
@@ -46,12 +47,11 @@ namespace AutomateQuizInput
                 if (quizDataList[i] == "")
                 {
                     Question question = new Question(questionId, questionText, answers.ToList(), CorrectAnswerIndex);
-                    // Check if there are more than five answers and remove the last if so
+                    // Check if there are more than five answers. If so notify the user, and exit
                     if (question.HasMoreThanFiveAnswers(question.Answers))
                     {
-                        Console.WriteLine($"The question with the following text: ---{question.QuestionText}--- has more than 5 answers. Please exit the program and modify the quiz document.");
+                        Console.WriteLine(NotifyIfFiveOrMoreAnswers(question.Answers));
                         Console.ReadLine();
-                        Environment.Exit(0);
                     }
 
                     // add a copy of the question to the quiz
@@ -85,6 +85,16 @@ namespace AutomateQuizInput
                 }
             }
             return questions;
+        }
+
+        public string NotifyIfFiveOrMoreAnswers(List<string> answers)
+        {
+            var answerText = new StringBuilder();
+            foreach (var answer in answers)
+            {
+                answerText.Append(answer + "\n");
+            }
+            return $"The question with the following text: ---{answerText}--- has more than 5 answers. Please exit the program and modify the quiz document.";
         }
     }
 }
